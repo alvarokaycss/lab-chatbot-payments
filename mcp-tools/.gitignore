@@ -1,30 +1,27 @@
 # Dependencies
 node_modules/
-*/node_modules/
 
-# Build outputs
+# Build output
 dist/
 build/
-*/dist/
-*/build/
 
 # Environment files
 .env
 .env.local
 .env.*.local
-*.env
-!*.env.example
+!.env.example
 
 # Logs
 logs/
 *.log
 npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-# OS & IDE metadata
+# OS & Editor files
 .DS_Store
 Thumbs.db
-.vscode/
 .idea/
-
-# Challenge artifacts/notes
-drp/
+.vscode/
+*.swp
+*.swo
