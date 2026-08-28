@@ -1,0 +1,352 @@
+@media (max-width: 1279px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .app-header {
+    padding: 0 22px;
+    gap: 15px;
+  }
+  .header-brand {
+    width: 160px;
+  }
+  .header-center {
+    gap: 20px;
+  }
+  .header-actions {
+    gap: 12px;
+  }
+  .header-shield {
+    display: none;
+  }
+  .header-user {
+    padding-left: 12px;
+  }
+
+  .user-panel {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .empty-chat {
+    padding: 23px 25px;
+  }
+
+  .empty-intro h1 {
+    font-size: 27px;
+  }
+  .composer-area {
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+  .composer-shift {
+    display: none;
+  }
+  .conversation-topline {
+    margin: 0 23px;
+  }
+  .conversation-topline > span:last-child {
+    display: none;
+  }
+  .message-list {
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+  .tool-message {
+    margin-left: 0;
+  }
+  .header-center {
+    font-size: 10px;
+  }
+}
+@media (max-width: 1099px) {
+  .workspace {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .header-center {
+    flex: 1;
+  }
+  .header-actions {
+    gap: 13px;
+  }
+  .header-user {
+    padding: 0;
+    border: 0;
+  }
+  .header-user > span:last-child {
+    display: none;
+  }
+  .logout-button {
+    margin-left: -7px;
+  }
+  .header-brand {
+    width: 168px;
+  }
+  .empty-chat {
+    max-width: 770px;
+    padding: 27px 35px;
+  }
+
+  .suggestion-card {
+    font-size: 11px;
+  }
+
+  .modal .user-panel {
+    padding: 5px 0;
+  }
+}
+@media (max-width: 767px) {
+  .app-header {
+    height: 66px;
+    padding: 0 16px;
+    gap: 10px;
+  }
+  .header-brand {
+    width: auto;
+    gap: 8px;
+  }
+  .header-center {
+    display: none;
+  }
+  .header-actions {
+    gap: 8px;
+  }
+  .header-actions .badge {
+    font-size: 6px;
+    padding: 5px;
+  }
+  .header-user {
+    display: none;
+  }
+  .app-header .brand-name {
+    font-size: 16px;
+  }
+  .app-header .brand-symbol {
+    height: 29px;
+    width: 29px;
+    font-size: 23px;
+  }
+  .app-header .brand {
+    gap: 8px;
+  }
+  .app-header .brand-subtitle {
+    font-size: 5px;
+  }
+  .header-actions .icon-button {
+    width: 30px;
+  }
+  .logout-button {
+    margin-left: 0;
+  }
+  .workspace {
+    display: flex;
+  }
+  .chat-main {
+    width: 100%;
+  }
+  .conversation-topline {
+    padding: 16px 0;
+    margin: 0 21px;
+  }
+  .conversation-topline > span:first-child {
+    font-size: 7px;
+  }
+  .empty-chat {
+    max-width: 600px;
+    padding: 22px 21px 25px;
+  }
+
+  .empty-intro {
+    padding-top: 31px;
+  }
+  .assistant-emblem {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    margin-bottom: 17px;
+  }
+  .empty-intro h1 {
+    font-size: 25px;
+    margin-top: 13px;
+  }
+  .empty-intro p {
+    font-size: 10px;
+    max-width: 270px;
+    margin: 0 auto 28px;
+  }
+
+  .suggestion-card {
+    font-size: 10px;
+    padding: 13px 11px;
+    gap: 8px;
+  }
+  .suggestion-card > svg:first-child {
+    width: 15px;
+  }
+  .suggestion-card > svg:last-child {
+    display: none;
+  }
+  .console-suggestion {
+    font-size: 8px;
+    line-height: 1.7;
+  }
+  .composer-area {
+    padding: 12px 16px max(15px, env(safe-area-inset-bottom));
+    border-top: 1px solid #ffffff06;
+  }
+  .chat-composer {
+    padding: 10px;
+    gap: 10px;
+  }
+  .chat-composer textarea {
+    font-size: 16px;
+    line-height: 21px;
+  }
+  .chat-composer textarea::placeholder {
+    font-size: 11px;
+  }
+  .composer-sparkle {
+    width: 16px;
+  }
+  .send-button {
+    width: 34px;
+    height: 34px;
+  }
+  .composer-footer {
+    font-size: 7px;
+    gap: 6px;
+  }
+  .composer-footer > span:last-child {
+    font-size: 7px;
+  }
+  .message-list {
+    padding: 23px 18px;
+  }
+  .message {
+    gap: 9px;
+    margin-bottom: 23px;
+  }
+  .message-user {
+    padding-left: 20px;
+  }
+  .message-content {
+    font-size: 12px;
+  }
+  .message-label {
+    font-size: 9px;
+  }
+  .message-user .message-body {
+    max-width: 88%;
+  }
+  .tool-message {
+    margin-left: 0;
+  }
+  .transaction-card {
+    padding: 16px;
+  }
+  .transaction-heading {
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .transaction-heading h3 {
+    font-size: 9px;
+  }
+  .transaction-heading > div > span {
+    font-size: 8px;
+  }
+  .transaction-heading > .badge {
+    font-size: 6px;
+  }
+  .transaction-icon {
+    width: 33px;
+    height: 33px;
+  }
+  .transaction-details dt {
+    font-size: 9px;
+  }
+  .transaction-details dd {
+    font-size: 10px;
+  }
+  .receipt-amount > strong {
+    font-size: 30px;
+  }
+  .receipt-footer {
+    font-size: 7px;
+  }
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+  .product-art {
+    height: 160px;
+  }
+  .product-info h3 {
+    font-size: 14px;
+  }
+  .product-info button {
+    font-size: 10px;
+  }
+  .product-category,
+  .product-id {
+    font-size: 8px;
+  }
+  .product-stock {
+    font-size: 9px;
+  }
+  .toast-container {
+    bottom: 17px;
+    right: 16px;
+  }
+  .toast > span {
+    font-size: 11px;
+  }
+
+  .input-wrap input {
+    font-size: 16px;
+  }
+  .input-wrap input::placeholder {
+    font-size: 12px;
+  }
+}
+@media (max-width: 374px) {
+  .header-actions .badge {
+    display: none;
+  }
+  .empty-chat {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .suggestion-card {
+    font-size: 9px;
+  }
+  .composer-footer > span:last-child {
+    display: none;
+  }
+  .transaction-heading > .badge {
+    margin-left: 41px;
+  }
+}
+@media (min-width: 768px) and (max-height: 800px) {
+  .empty-intro {
+    padding-top: 24px;
+  }
+  .empty-intro p {
+    margin-bottom: 23px;
+  }
+  .assistant-emblem {
+    height: 43px;
+    width: 43px;
+    margin-bottom: 14px;
+  }
+
+  .user-greeting {
+    margin-top: 23px;
+  }
+  .panel-info-title {
+    margin-top: 24px;
+  }
+}
+
+.chat-composer textarea {
+  min-height: 32px;
+  scrollbar-width: thin;
+}
