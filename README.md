@@ -1,6 +1,6 @@
 # Chatbot com Tools MCP de Pagamentos
 
-Este projeto é a implementação prática desenvolvida como solução para o desafio proposto no bootcamp **AI Agentic Payments FDE**. A aplicação consiste em um assistente de vendas e pagamentos autônomo e determinístico, integrando um modelo de linguagem local (**Ollama** executando `qwen3:1.7b`), o protocolo padronizado **Model Context Protocol (MCP)**, uma **API Backend em Node.js com TypeScript** e uma **Interface Web em React**.
+Implementação prática desenvolvida como solução para o desafio proposto no bootcamp **AI Agentic Payments FDE**. A aplicação consiste em um assistente de vendas e pagamentos autônomo e determinístico, integrando um modelo de linguagem local (**Ollama** executando `qwen3:1.7b`), o protocolo padronizado **Model Context Protocol (MCP)**, uma **API Backend em Node.js com TypeScript** e uma **Interface Web em React**.
 
 ---
 
