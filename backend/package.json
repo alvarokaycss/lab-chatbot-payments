@@ -1,0 +1,36 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "API Backend Orquestrador (Auth, LLM Ollama e MCP Client)",
+  "type": "module",
+  "main": "dist/server.js",
+  "scripts": {
+    "dev": "dotenvx run -- tsx watch src/server.ts",
+    "build": "tsc",
+    "start": "dotenvx run -- node dist/server.js"
+  },
+  "keywords": [
+    "backend",
+    "ollama",
+    "mcp-client",
+    "payments"
+  ],
+  "author": "Álvaro Kayc",
+  "license": "ISC",
+  "dependencies": {
+    "@dotenvx/dotenvx": "^2.22.0",
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "zod": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/node": "^26.4.0",
+    "tsx": "^4.23.12",
+    "typescript": "^7.0.2"
+  }
+}
