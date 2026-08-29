@@ -1,26 +1,24 @@
 import assert from "node:assert/strict";
 import "@dotenvx/dotenvx/config";
-import { hashPassword, verifyPassword } from "./auth/password.js";
+import { hashPassword, verifyPassword } from "../auth/password.js";
 import {
   authenticateUser,
   findUserById,
   getUserProfile,
   deductUserBalance,
   resetUsersStore
-} from "./auth/users.js";
-import { generateToken, verifyToken } from "./auth/jwt.js";
+} from "../auth/users.js";
+import { generateToken, verifyToken } from "../auth/jwt.js";
 
 function runTests() {
   resetUsersStore();
 
-  // Teste de Hashing scrypt
   const hash = hashPassword("senha_teste");
   assert.ok(hash.includes(":"), "Hash deve conter salt:hash");
   assert.strictEqual(verifyPassword("senha_teste", hash), true);
   assert.strictEqual(verifyPassword("senha_incorreta", hash), false);
   console.log("[OK] Hashing e verificacao scrypt");
 
-  // Teste de Autenticacao de Usuario
   const userVip = authenticateUser("cliente_vip", "123");
   assert.ok(userVip !== null);
   assert.strictEqual(userVip?.id, "usr_vip_01");
@@ -37,7 +35,6 @@ function runTests() {
   assert.strictEqual(foundById?.username, "cliente_vip");
   console.log("[OK] Autenticacao de usuarios e perfis");
 
-  // Teste de Emissao e Validacao de JWT
   const tokenData = generateToken({
     id: userVip!.id,
     username: userVip!.username,
@@ -55,7 +52,6 @@ function runTests() {
   assert.strictEqual(tokenInvalido, null);
   console.log("[OK] Emissao e verificacao de JWT");
 
-  // Teste de Controle de Limites
   const novoSaldo = deductUserBalance("usr_vip_01", 500);
   assert.strictEqual(novoSaldo, 14500.0);
   const perfil = getUserProfile("usr_vip_01");

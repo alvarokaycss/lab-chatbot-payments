@@ -8,7 +8,9 @@
     "dev": "dotenvx run -- tsx watch src/server.ts",
     "build": "tsc",
     "start": "dotenvx run -- node dist/server.js",
-    "test:auth": "dotenvx run -- tsx src/test-auth.ts"
+    "test:auth": "dotenvx run -- tsx src/tests/auth.test.ts",
+    "test:mcp": "dotenvx run -- tsx src/tests/mcp.test.ts",
+    "test": "npm run test:auth && npm run test:mcp"
   },
   "keywords": [
     "backend",
