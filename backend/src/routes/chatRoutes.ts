@@ -21,8 +21,10 @@ chatRouter.post("/", requireAuth, async (req: Request, res: Response) => {
   res.setHeader("Connection", "keep-alive");
 
   const abortController = new AbortController();
-  req.on("close", () => {
-    abortController.abort();
+  res.on("close", () => {
+    if (!res.writableEnded) {
+      abortController.abort();
+    }
   });
 
   const onLine = (data: Record<string, unknown>) => {
