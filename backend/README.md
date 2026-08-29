@@ -106,6 +106,29 @@ npm run dev
 }
 ```
 
+#### Requisicao 4: Conversa com o Agente com Streaming (`POST /api/chat`)
+- **Metodo:** `POST`
+- **URL:** `http://localhost:3000/api/chat`
+- **Headers:**
+  - `Content-Type: application/json`
+  - `Authorization: Bearer <seu_token_jwt>`
+- **Body:**
+```json
+{
+  "messages": [
+    { "role": "user", "content": "Quais produtos voces tem no catalogo?" }
+  ]
+}
+```
+- **Resposta em Streaming (Linhas NDJSON):**
+```ndjson
+{"tool":{"name":"listar_catalogo","arguments":{},"result":{"produtos":[{"id":"prod_001","nome":"Teclado Mecanico","preco":350.00,"estoque":15},{"id":"prod_002","nome":"Mouse Gamer","preco":180.00,"estoque":20},{"id":"prod_003","nome":"Fone Bluetooth","preco":249.90,"estoque":12}]}}}
+{"message":{"role":"assistant","content":"Temos "}}
+{"message":{"role":"assistant","content":"os seguintes produtos disponíveis:\n- "}}
+{"message":{"role":"assistant","content":"Teclado Mecânico (R$ 350,00)\n- Mouse Gamer (R$ 180,00)\n- Fone Bluetooth (R$ 249,90)."}}
+{"done":true}
+```
+
 ---
 
 ## 4. Evidencias de Testes
@@ -123,8 +146,7 @@ Todos os testes de autenticacao passaram com sucesso.
 
 ### 4.2 Testes no Postman
 1. **Healthcheck (`GET /health`)**: Servidor respondendo 200 OK.
-   ![Healthcheck Postman](docs/screenshots/healthcheck.png)
 2. **Login (`POST /api/auth/login`)**: Autenticacao e retorno de token JWT com perfil.
-   ![Login Postman](docs/screenshots/login.png)
 3. **Consulta de Perfil (`GET /api/user/me`)**: Rota protegida retornando dados do usuario autenticado.
-   ![Profile Me Postman](docs/screenshots/profile-me.png)
+4. **Chat com Streaming (`POST /api/chat`)**: Rota autenticada respondendo com descoberta de MCP tools e streaming NDJSON.
+
