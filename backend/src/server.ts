@@ -2,6 +2,7 @@ import "@dotenvx/dotenvx/config";
 import express from "express";
 import cors from "cors";
 import { authRouter } from "./routes/authRoutes.js";
+import { chatRouter } from "./routes/chatRoutes.js";
 
 const PORT = Number(process.env.PORT ?? 3000);
 const HOST = process.env.HOST ?? "localhost";
@@ -22,6 +23,7 @@ app.get("/health", (_req, res) => {
 
 app.use("/api/auth", authRouter);
 app.use("/api/user", authRouter);
+app.use("/api/chat", chatRouter);
 
 app.listen(PORT, () => {
   console.log(`[BACKEND-API] Servidor rodando em http://${HOST}:${PORT}`);
