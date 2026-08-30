@@ -5,16 +5,30 @@ import {
   type ConversationMessage
 } from "../llm/agentService.js";
 
+import { z } from "zod";
+
+const messageSchema = z.object({
+  role: z.enum(["user", "assistant", "system", "tool"]),
+  content: z.string().optional(),
+  tool_calls: z.array(z.record(z.string(), z.unknown())).optional()
+});
+
+const chatSchema = z.object({
+  messages: z.array(messageSchema).min(1)
+});
+
 export const chatRouter = Router();
 
 chatRouter.post("/", requireAuth, async (req: Request, res: Response) => {
-  const { messages } = req.body ?? {};
+  const parseResult = chatSchema.safeParse(req.body);
 
-  if (!Array.isArray(messages) || messages.length === 0) {
+  if (!parseResult.success) {
     return res.status(400).json({
       error: "O campo 'messages' deve ser um array nao-vazio de mensagens."
     });
   }
+
+  const { messages } = parseResult.data;
 
   res.setHeader("Content-Type", "application/x-ndjson");
   res.setHeader("Cache-Control", "no-cache");

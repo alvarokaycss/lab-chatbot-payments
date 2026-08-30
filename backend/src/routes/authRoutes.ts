@@ -3,16 +3,25 @@ import { authenticateUser, getUserProfile } from "../auth/users.js";
 import { generateToken } from "../auth/jwt.js";
 import { requireAuth } from "../auth/middleware.js";
 
+import { z } from "zod";
+
+const loginSchema = z.object({
+  username: z.string({ message: "username e password sao obrigatorios." }),
+  password: z.string({ message: "username e password sao obrigatorios." })
+});
+
 export const authRouter = Router();
 
 authRouter.post("/login", (req: Request, res: Response) => {
-  const { username, password } = req.body ?? {};
+  const result = loginSchema.safeParse(req.body);
 
-  if (typeof username !== "string" || typeof password !== "string") {
+  if (!result.success) {
     return res
       .status(400)
       .json({ error: "username e password sao obrigatorios." });
   }
+
+  const { username, password } = result.data;
 
   const user = authenticateUser(username, password);
   if (!user) {
