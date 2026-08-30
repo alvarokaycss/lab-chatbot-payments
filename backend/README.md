@@ -74,3 +74,17 @@ npm run dev
 {"message":{"role":"assistant","content":"Temos..."}}
 {"done":true}
 ```
+
+## Evidências no Postman
+
+1. **Healthcheck (`GET /health`)**
+   ![Healthcheck Postman](docs/screenshots/healthcheck.png)
+
+2. **Login de Usuário (`POST /api/auth/login`)**
+   ![Login Postman](docs/screenshots/login.png)
+
+3. **Perfil do Usuário (`GET /api/user/me`)**
+   ![Perfil Postman](docs/screenshots/profile-me.png)
+
+4. **Chat Stream (`POST /api/chat`)**
+   ![Chat Stream Postman](docs/screenshots/chat-stream.png)

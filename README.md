@@ -37,7 +37,7 @@ A divisão do trabalho foi proposta por **Kauan Pedreira**, distribuindo as fren
 | **Ollama** | Local | `11434` | Modelo LLM local (`qwen3:1.7b`) |
 | **Frontend** | `frontend/` | `5173` | Interface React + Vite |
 
-> Para mais detalhes técnicos de cada módulo, veja os READMEs do [backend](backend/README.md) e do [mcp-tools](mcp-tools/README.md).
+> Para mais detalhes técnicos (e visualização dos testes) de cada módulo, veja os READMEs do [backend](backend/README.md) e do [mcp-tools](mcp-tools/README.md).
 
 ## Como Rodar
 
