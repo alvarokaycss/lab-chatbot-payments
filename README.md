@@ -32,57 +32,41 @@ A divisão do trabalho foi proposta por **Kauan Pedreira**, distribuindo as fren
 
 | Serviço | Pasta | Porta | Descrição |
 |---|---|---|---|
-| **MCP Server** | `mcp-tools/` | `3001` | Expõe as 3 tools MCP (`listar_catalogo`, `registrar_intencao`, `realizar_compra`) |
-| **Backend API** | `backend/` | `3000` | Login, JWT, cliente MCP e rota de chat com streaming |
-| **Ollama** | local | `11434` | Modelo `qwen3:1.7b` local |
+| **MCP Server** | `mcp-tools/` | `3001` | Tools de catálogo, intenção e compra |
+| **Backend API** | `backend/` | `3000` | Login, JWT, cliente MCP e chat com streaming |
+| **Ollama** | Local | `11434` | Modelo LLM local (`qwen3:1.7b`) |
 | **Frontend** | `frontend/` | `5173` | Interface React + Vite |
 
-> Para documentação técnica detalhada de cada módulo, consulte o [README do mcp-tools](mcp-tools/README.md) e o [README do backend](backend/README.md).
+> Para mais detalhes técnicos de cada módulo, veja os READMEs do [backend](backend/README.md) e do [mcp-tools](mcp-tools/README.md).
 
----
+## Como Rodar
 
-## 4. Como Rodar
-
-O projeto roda 100% em memória de execução, sem necessidade de banco de dados externo ou Docker.
-
-### Pré-requisitos
-- Node.js 22+
-- Ollama instalado com o modelo `qwen3:1.7b`:
-  ```bash
-  ollama run qwen3:1.7b
-  ```
-
-### 1. Iniciar o Servidor MCP (Terminal 1)
 ```bash
+# 1. Pré-requisito: Ollama rodando o modelo
+ollama run qwen3:1.7b
+
+# 2. Iniciar o Servidor MCP (Terminal 1)
 cd mcp-tools
 npm install
 npm run dev
-```
 
-### 2. Iniciar o Backend (Terminal 2)
-```bash
+# 3. Iniciar o Backend (Terminal 2)
 cd backend
 npm install
 npm run dev
 ```
 
----
-
-## 5. Testes Automatizados
+## Testes Automatizados
 
 ```bash
-# Testar as 3 tools do MCP
-cd mcp-tools
-npm run test:tools
+# Testar ferramentas MCP
+cd mcp-tools && npm run test:tools
 
-# Testar autenticação e cliente MCP no backend
-cd ../backend
-npm test
+# Testar autenticação do backend
+cd backend && npm test
 ```
 
----
-
-## 6. Screenshots da Entrega
+## Screenshots da Entrega
 
 - [ ] Compra aprovada com Cartão e PIX.
 - [ ] Compra recusada por limite insuficiente.
