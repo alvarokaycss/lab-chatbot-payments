@@ -1,0 +1,218 @@
+/* Layout do chat sem painéis laterais: uma coluna compartilhada e centralizada. */
+.chat-main {
+  --chat-content-width: 960px;
+  --chat-gutter: 28px;
+}
+.app-header {
+  height: 76px;
+  padding-inline: max(28px, calc((100% - 1120px) / 2));
+}
+.header-brand {
+  width: auto;
+}
+.header-center {
+  display: none;
+}
+.conversation-topline,
+.message-list,
+.composer-area {
+  width: min(var(--chat-content-width), calc(100% - var(--chat-gutter) * 2));
+  margin-inline: auto;
+}
+.conversation-topline {
+  min-height: 76px;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--color-border);
+}
+.conversation-topline > span:first-child {
+  font-size: 9px;
+}
+.conversation-new-chat {
+  min-height: 40px;
+  padding: 10px 14px;
+  font-size: 12px;
+}
+.message-list {
+  max-width: none;
+  padding: 28px 0;
+}
+.chat-window--empty {
+  display: flex;
+  flex-direction: column;
+}
+.empty-chat {
+  width: min(720px, calc(100% - var(--chat-gutter) * 2));
+  max-width: none;
+  margin: auto;
+  padding: 36px 0;
+}
+.empty-intro {
+  padding-top: 0;
+}
+.assistant-emblem {
+  width: 58px;
+  height: 58px;
+  margin-bottom: 24px;
+}
+.empty-intro h1 {
+  font-size: clamp(28px, 2.7vw, 40px);
+  line-height: 1.25;
+  letter-spacing: -1.2px;
+  margin: 0 0 16px;
+}
+.empty-intro p {
+  max-width: 480px;
+  margin: 0 auto 36px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+.suggestions-title {
+  margin-bottom: 14px;
+  font-size: 9px;
+}
+.suggestion-grid {
+  gap: 12px;
+}
+.suggestion-card {
+  min-height: 64px;
+  padding: 18px 16px;
+  font-size: 13px;
+  gap: 12px;
+}
+.console-suggestion {
+  padding-top: 10px;
+  font-size: 11px;
+  line-height: 1.7;
+}
+.composer-area {
+  max-width: none;
+  align-self: center;
+  padding: 16px 0 max(24px, env(safe-area-inset-bottom));
+  border-top: 0;
+}
+.chat-composer {
+  min-height: 66px;
+  padding: 12px 14px 12px 20px;
+  border-radius: 14px;
+}
+.chat-composer textarea {
+  font-size: 14px;
+}
+.chat-composer textarea::placeholder {
+  font-size: 14px;
+}
+.send-button {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}
+.composer-footer {
+  margin-top: 12px;
+  font-size: 10px;
+}
+.message-content {
+  font-size: 14px;
+}
+@media (max-width: 767px) {
+  .chat-main {
+    --chat-gutter: 18px;
+  }
+  .app-header {
+    height: 66px;
+    padding-inline: 18px;
+  }
+  .conversation-topline {
+    min-height: 68px;
+    padding: 12px 0;
+    gap: 8px;
+  }
+  .conversation-topline > span:first-child {
+    font-size: 7px;
+    letter-spacing: 0.7px;
+  }
+  .conversation-new-chat {
+    font-size: 11px;
+    padding: 9px 11px;
+  }
+  .empty-chat {
+    padding: 28px 0;
+  }
+  .assistant-emblem {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+  }
+  .empty-intro h1 {
+    font-size: 28px;
+    letter-spacing: -0.8px;
+  }
+  .empty-intro p {
+    font-size: 12px;
+    max-width: 290px;
+    margin-bottom: 28px;
+  }
+  .suggestion-grid {
+    gap: 10px;
+  }
+  .suggestion-card {
+    min-height: 70px;
+    padding: 13px 12px;
+    font-size: 11px;
+    gap: 8px;
+  }
+  .console-suggestion {
+    font-size: 10px;
+    padding-top: 6px;
+  }
+  .message-list {
+    padding: 22px 0;
+  }
+  .composer-area {
+    padding: 12px 0 max(16px, env(safe-area-inset-bottom));
+  }
+  .chat-composer {
+    min-height: 60px;
+    padding: 10px 10px 10px 14px;
+    gap: 10px;
+  }
+  .chat-composer textarea {
+    font-size: 16px;
+  }
+  .chat-composer textarea::placeholder {
+    font-size: 12px;
+  }
+  .send-button {
+    width: 36px;
+    height: 36px;
+  }
+  .composer-footer,
+  .composer-footer > span:last-child {
+    font-size: 8px;
+  }
+}
+@media (max-width: 374px) {
+  .chat-main {
+    --chat-gutter: 14px;
+  }
+  .app-header {
+    padding-inline: 14px;
+  }
+  .empty-intro h1 {
+    font-size: 25px;
+  }
+  .suggestion-card {
+    font-size: 10px;
+    padding: 12px 10px;
+  }
+}
+@media (max-height: 700px) {
+  .empty-chat {
+    padding-block: 24px;
+  }
+  .assistant-emblem {
+    margin-bottom: 16px;
+  }
+  .empty-intro p {
+    margin-bottom: 24px;
+  }
+}
