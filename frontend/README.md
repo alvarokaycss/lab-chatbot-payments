@@ -83,3 +83,20 @@ src/
 ├── types/        # Tipagens TypeScript e contratos da API
 └── utils/        # Formatadores de moeda, tempo e type guards
 ```
+
+---
+
+## 6. Evidências da Interface
+
+1. **Tela de Login e Seleção de Perfis**
+   ![Tela de Login](docs/screenshots/login-screen.png)
+
+2. **Catálogo de Produtos no Chat**
+   ![Catálogo de Produtos](docs/screenshots/chat-catalogo.png)
+
+3. **Comprovante de Compra Aprovada**
+   ![Comprovante de Compra](docs/screenshots/chat-comprovante.png)
+
+4. **Tratamento Visual de Recusa**
+   ![Recusa de Compra](docs/screenshots/chat-recusa.png)
+

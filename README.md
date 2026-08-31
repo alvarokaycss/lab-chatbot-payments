@@ -90,7 +90,15 @@ cd frontend && npm test
 Conforme especificado no `desafio.md`, a entrega contempla as evidências visuais dos 4 cenários obrigatórios:
 
 1. **Compra aprovada via PIX:** Sucesso na liquidação via PIX com geração de comprovante e débito de limite.
+   ![Compra Aprovada via PIX](docs/screenshots/compra-aprovada-pix.png)
+
 2. **Compra aprovada via Cartão:** Sucesso na liquidação via cartão de crédito com atualização de saldo.
+   ![Compra Aprovada via Cartão](docs/screenshots/compra-aprovada-cartao.png)
+
 3. **Recusa por limite excedido (`LIMITE_EXCEDIDO`):** Tentativa de compra com valor acima do saldo disponível (ex: perfil `cliente_sem_saldo`).
+   ![Recusa por Limite Excedido](docs/screenshots/recusa-limite-excedido.png)
+
 4. **Recusa por intenção inválida (`INTENCAO_INVALIDA`):** Tentativa de compra com `intencao_id` inventado, expirado ou pertencente a outra sessão.
+   ![Recusa por Intenção Inválida](docs/screenshots/recusa-intencao-invalida.png)
+
 
