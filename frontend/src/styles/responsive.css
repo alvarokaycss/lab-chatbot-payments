@@ -111,8 +111,8 @@
     gap: 8px;
   }
   .header-actions .badge {
-    font-size: 6px;
-    padding: 5px;
+    font-size: 10px;
+    padding: 4px 6px;
   }
   .header-user {
     display: none;
@@ -129,7 +129,7 @@
     gap: 8px;
   }
   .app-header .brand-subtitle {
-    font-size: 5px;
+    font-size: 10px;
   }
   .header-actions .icon-button {
     width: 30px;
@@ -148,7 +148,7 @@
     margin: 0 21px;
   }
   .conversation-topline > span:first-child {
-    font-size: 7px;
+    font-size: 10px;
   }
   .empty-chat {
     max-width: 600px;
@@ -161,7 +161,7 @@
   .assistant-emblem {
     width: 46px;
     height: 46px;
-    border-radius: 12px;
+    border-radius: 0;
     margin-bottom: 17px;
   }
   .empty-intro h1 {
@@ -169,13 +169,13 @@
     margin-top: 13px;
   }
   .empty-intro p {
-    font-size: 10px;
+    font-size: 11px;
     max-width: 270px;
     margin: 0 auto 28px;
   }
 
   .suggestion-card {
-    font-size: 10px;
+    font-size: 11px;
     padding: 13px 11px;
     gap: 8px;
   }
@@ -186,7 +186,7 @@
     display: none;
   }
   .console-suggestion {
-    font-size: 8px;
+    font-size: 10px;
     line-height: 1.7;
   }
   .composer-area {
@@ -198,11 +198,11 @@
     gap: 10px;
   }
   .chat-composer textarea {
-    font-size: 16px;
+    font-size: 14px;
     line-height: 21px;
   }
   .chat-composer textarea::placeholder {
-    font-size: 11px;
+    font-size: 12px;
   }
   .composer-sparkle {
     width: 16px;
@@ -212,11 +212,11 @@
     height: 34px;
   }
   .composer-footer {
-    font-size: 7px;
+    font-size: 10px;
     gap: 6px;
   }
   .composer-footer > span:last-child {
-    font-size: 7px;
+    font-size: 10px;
   }
   .message-list {
     padding: 23px 18px;
@@ -229,10 +229,10 @@
     padding-left: 20px;
   }
   .message-content {
-    font-size: 12px;
+    font-size: 13px;
   }
   .message-label {
-    font-size: 9px;
+    font-size: 11px;
   }
   .message-user .message-body {
     max-width: 88%;
@@ -248,29 +248,29 @@
     flex-wrap: wrap;
   }
   .transaction-heading h3 {
-    font-size: 9px;
+    font-size: 11px;
   }
   .transaction-heading > div > span {
-    font-size: 8px;
+    font-size: 10px;
   }
   .transaction-heading > .badge {
-    font-size: 6px;
+    font-size: 10px;
   }
   .transaction-icon {
     width: 33px;
     height: 33px;
   }
   .transaction-details dt {
-    font-size: 9px;
+    font-size: 11px;
   }
   .transaction-details dd {
-    font-size: 10px;
+    font-size: 11px;
   }
   .receipt-amount > strong {
     font-size: 30px;
   }
   .receipt-footer {
-    font-size: 7px;
+    font-size: 10px;
   }
   .product-grid {
     grid-template-columns: 1fr;
@@ -282,14 +282,14 @@
     font-size: 14px;
   }
   .product-info button {
-    font-size: 10px;
+    font-size: 11px;
   }
   .product-category,
   .product-id {
-    font-size: 8px;
+    font-size: 10px;
   }
   .product-stock {
-    font-size: 9px;
+    font-size: 11px;
   }
   .toast-container {
     bottom: 17px;

@@ -25,7 +25,7 @@
   border-bottom: 1px solid var(--color-border);
 }
 .conversation-topline > span:first-child {
-  font-size: 9px;
+  font-size: 11px;
 }
 .conversation-new-chat {
   min-height: 40px;
@@ -53,6 +53,7 @@
   width: 58px;
   height: 58px;
   margin-bottom: 24px;
+  border-radius: 0;
 }
 .empty-intro h1 {
   font-size: clamp(28px, 2.7vw, 40px);
@@ -68,7 +69,8 @@
 }
 .suggestions-title {
   margin-bottom: 14px;
-  font-size: 9px;
+  font-size: 11px;
+  font-weight: 600;
 }
 .suggestion-grid {
   gap: 12px;
@@ -78,6 +80,7 @@
   padding: 18px 16px;
   font-size: 13px;
   gap: 12px;
+  border-radius: 0;
 }
 .console-suggestion {
   padding-top: 10px;
@@ -93,7 +96,7 @@
 .chat-composer {
   min-height: 66px;
   padding: 12px 14px 12px 20px;
-  border-radius: 14px;
+  border-radius: 0;
 }
 .chat-composer textarea {
   font-size: 14px;
@@ -104,11 +107,11 @@
 .send-button {
   width: 40px;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 0;
 }
 .composer-footer {
   margin-top: 12px;
-  font-size: 10px;
+  font-size: 11px;
 }
 .message-content {
   font-size: 14px;
@@ -127,7 +130,7 @@
     gap: 8px;
   }
   .conversation-topline > span:first-child {
-    font-size: 7px;
+    font-size: 10px;
     letter-spacing: 0.7px;
   }
   .conversation-new-chat {
@@ -141,6 +144,7 @@
     width: 48px;
     height: 48px;
     margin-bottom: 20px;
+    border-radius: 0;
   }
   .empty-intro h1 {
     font-size: 28px;
@@ -159,6 +163,7 @@
     padding: 13px 12px;
     font-size: 11px;
     gap: 8px;
+    border-radius: 0;
   }
   .console-suggestion {
     font-size: 10px;
@@ -174,9 +179,10 @@
     min-height: 60px;
     padding: 10px 10px 10px 14px;
     gap: 10px;
+    border-radius: 0;
   }
   .chat-composer textarea {
-    font-size: 16px;
+    font-size: 14px;
   }
   .chat-composer textarea::placeholder {
     font-size: 12px;
@@ -184,10 +190,11 @@
   .send-button {
     width: 36px;
     height: 36px;
+    border-radius: 0;
   }
   .composer-footer,
   .composer-footer > span:last-child {
-    font-size: 8px;
+    font-size: 10px;
   }
 }
 @media (max-width: 374px) {

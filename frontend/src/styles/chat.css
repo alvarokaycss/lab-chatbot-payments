@@ -22,8 +22,8 @@
   flex-shrink: 0;
 }
 .app-header .brand-subtitle {
-  font-size: 6px;
-  letter-spacing: 3.5px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
 }
 .app-header .brand-name {
   font-size: 19px;
@@ -37,7 +37,7 @@
   align-items: center;
   gap: 28px;
   color: #878787;
-  font-size: 11px;
+  font-size: 12px;
 }
 .header-separator {
   width: 1px;
@@ -51,8 +51,8 @@
   margin-left: auto;
 }
 .header-actions .badge {
-  padding: 7px 8px;
-  font-size: 8px;
+  padding: 5px 8px;
+  font-size: 11px;
 }
 .header-actions .badge-yellow .status-dot {
   background: var(--color-yellow);
@@ -65,7 +65,7 @@
   align-items: center;
   gap: 6px;
   color: #929292;
-  font-size: 9px;
+  font-size: 11px;
 }
 .header-user {
   display: flex;
@@ -75,7 +75,7 @@
   border-left: 1px solid var(--color-border);
 }
 .header-user > span:last-child {
-  font-size: 11px;
+  font-size: 12px;
 }
 .logout-button {
   margin-left: -13px;
@@ -107,19 +107,19 @@
 }
 .conversation-topline > span:first-child {
   color: #a5a5a5;
-  letter-spacing: 1.2px;
-  font-size: 8px;
+  letter-spacing: 0.8px;
+  font-size: 11px;
   display: flex;
   align-items: center;
   gap: 7px;
 }
 .conversation-topline .status-dot {
   background: var(--color-orange);
-  width: 4px;
-  height: 4px;
+  width: 5px;
+  height: 5px;
 }
 .conversation-topline > span:last-child {
-  font-size: 8px;
+  font-size: 11px;
   color: #777;
 }
 .chat-window {
@@ -177,13 +177,14 @@
 }
 .empty-intro p {
   color: #909090;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.7;
   margin-bottom: 32px;
 }
 .suggestions-title {
-  font-size: 7px;
-  letter-spacing: 1.2px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
   color: #909090;
   display: flex;
   align-items: center;
@@ -213,8 +214,8 @@
   transition:
     border-color 0.18s,
     background 0.18s;
-  font-size: 10px;
-  line-height: 1.45;
+  font-size: 12px;
+  line-height: 1.5;
 }
 .suggestion-card > svg:first-child {
   color: #c8a77a;
@@ -239,11 +240,11 @@
   border: 0;
   padding: 8px 0 0;
   color: #868686;
-  font-size: 9px;
+  font-size: 11px;
   flex-wrap: wrap;
 }
 .console-suggestion strong {
-  font-weight: 400;
+  font-weight: 500;
   color: #b9b9b9;
 }
 .console-suggestion:hover strong {
@@ -279,7 +280,7 @@
   color: #f2f2f2;
   flex: 1;
   min-width: 0;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 20px;
   max-height: 132px;
   outline: 0;
@@ -314,7 +315,7 @@
   align-items: center;
   justify-content: space-between;
   color: #858585;
-  font-size: 8px;
+  font-size: 11px;
   margin: 11px 3px 0;
   gap: 8px;
 }
@@ -360,8 +361,9 @@
   color: #969696;
 }
 .panel-title > span {
-  font-size: 8px;
-  letter-spacing: 1.3px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
 }
 .panel-title > svg {
   color: #777;
@@ -380,7 +382,7 @@
 }
 .user-greeting p {
   color: #969696;
-  font-size: 9px;
+  font-size: 12px;
   margin: 9px 0 21px;
 }
 .wallet-card {
@@ -399,7 +401,7 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 9px;
+  font-size: 11px;
 }
 .wallet-card-top > svg {
   color: #9c7849;
@@ -430,7 +432,7 @@
   justify-content: space-between;
   margin: 12px 0 19px;
   gap: 8px;
-  font-size: 9px;
+  font-size: 12px;
   color: #a69c8d;
 }
 .limit-total strong {
@@ -444,13 +446,14 @@
   gap: 5px;
   padding: 10px 0;
   color: #ac9676;
-  font-size: 8px;
+  font-size: 11px;
   border-top: 1px solid #ffffff09;
 }
 .panel-info-title {
   color: #939393;
-  font-size: 7px;
-  letter-spacing: 1px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
   margin: 32px 0 20px;
 }
 .shopping-steps {
@@ -472,16 +475,17 @@
   flex-shrink: 0;
   border: 1px solid #36312a;
   border-radius: 0;
-  font-size: 8px;
+  font-size: 11px;
+  font-weight: 600;
   background: #1b1915;
 }
 .shopping-steps strong {
-  font-size: 10px;
-  font-weight: 500;
+  font-size: 12px;
+  font-weight: 600;
   color: #d2d2d2;
 }
 .shopping-steps p {
-  font-size: 8px;
+  font-size: 11px;
   margin: 6px 0 0;
   color: #949494;
   line-height: 1.5;
@@ -495,7 +499,7 @@
   border-bottom: 1px solid var(--color-border);
 }
 .payment-methods > span {
-  font-size: 8px;
+  font-size: 11px;
   letter-spacing: 0.6px;
   display: flex;
   align-items: center;
@@ -522,7 +526,7 @@
 }
 .activity-empty p {
   margin: 0;
-  font-size: 9px;
+  font-size: 12px;
   line-height: 1.7;
 }
 .activity-panel ul {
@@ -535,7 +539,7 @@
   gap: 8px;
   align-items: center;
   padding: 8px 0;
-  font-size: 9px;
+  font-size: 12px;
   color: #a3a3a3;
 }
 .activity-panel li > svg {
@@ -556,20 +560,20 @@
   align-items: center;
   gap: 6px;
   color: #c6c3b6;
-  font-size: 9px;
+  font-size: 11px;
 }
 .connection-card .status-dot {
   background: #c7a953;
 }
 .connection-card > .badge {
   margin-left: auto;
-  font-size: 6px;
-  padding: 3px 4px;
+  font-size: 10px;
+  padding: 3px 6px;
 }
 .connection-card p {
   margin: 4px 0 0;
-  font-size: 8px;
-  line-height: 1.8;
+  font-size: 11px;
+  line-height: 1.6;
   color: #9a998f;
 }
 .connection-card button,
@@ -580,7 +584,7 @@
   color: #ffb685;
   background: none;
   border: none;
-  font-size: 10px;
+  font-size: 11px;
   padding: 8px 0 0;
 }
 .offline-dot {
@@ -593,7 +597,7 @@
   gap: 9px;
   padding-top: 28px;
   color: #888;
-  font-size: 8px;
+  font-size: 11px;
   line-height: 1.7;
 }
 .profile-warning {
@@ -603,7 +607,7 @@
   border-radius: 0;
   margin-top: 12px;
   padding: 11px;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.6;
 }
 .message-list {
@@ -631,13 +635,15 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 10px;
+  font-size: 12px;
+  font-weight: 500;
   color: #bebebe;
   margin-bottom: 10px;
   padding-top: 3px;
 }
 .message-label > span {
-  font-size: 7px;
+  font-size: 11px;
+  font-weight: 600;
   letter-spacing: 0.8px;
   color: #9b815e;
 }
@@ -671,7 +677,7 @@
 }
 .interrupted-label {
   display: block;
-  font-size: 10px;
+  font-size: 11px;
   line-height: 1.5;
   color: #cda276;
   margin-top: 10px;
@@ -699,7 +705,7 @@
 }
 .typing-indicator small {
   margin-left: 8px;
-  font-size: 10px;
+  font-size: 12px;
   color: #a7a091;
 }
 .tool-message {
@@ -718,12 +724,13 @@
   align-items: center;
   gap: 6px;
   color: #c3b59d;
-  font-size: 8px;
-  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
 }
 .tool-section-heading small {
   color: #909090;
-  font-size: 8px;
+  font-size: 11px;
 }
 .product-grid {
   display: grid;
@@ -772,7 +779,7 @@
   position: absolute;
   bottom: 8px;
   left: 10px;
-  font-size: 5px;
+  font-size: 10px;
   letter-spacing: 1.2px;
   color: #8b8c7e;
 }
@@ -780,26 +787,28 @@
   position: absolute;
   top: 9px;
   right: 9px;
-  font-size: 7px;
-  background: #0e0e0d99;
-  padding: 4px 5px;
+  font-size: 11px;
+  font-weight: 600;
+  background: #0e0e0dcc;
+  padding: 4px 8px;
   color: #c2c6ae;
-  border: 1px solid #d1d5a012;
+  border: 1px solid #d1d5a022;
   border-radius: 0;
 }
 .product-info {
   padding: 14px;
 }
 .product-category {
-  font-size: 7px;
+  font-size: 11px;
+  font-weight: 600;
   color: #a7a096;
   text-transform: uppercase;
-  letter-spacing: 1.3px;
+  letter-spacing: 1.2px;
 }
 .product-info h3 {
-  font-size: 12px;
+  font-size: 13px;
   margin: 7px 0 10px;
-  font-weight: 550;
+  font-weight: 600;
 }
 .product-price {
   display: block;
@@ -810,7 +819,7 @@
 }
 .product-id {
   display: block;
-  font-size: 7px;
+  font-size: 11px;
   color: #888;
   margin-top: 5px;
 }
@@ -825,7 +834,8 @@
   border: none;
   border-top: 1px solid var(--color-border);
   background: transparent;
-  font-size: 8px;
+  font-size: 11px;
+  font-weight: 500;
   color: #d4b38e;
   text-align: left;
 }
@@ -862,14 +872,15 @@
   min-width: 0;
 }
 .transaction-heading h3 {
-  font-size: 10px;
-  letter-spacing: 1px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.8px;
   margin: 0 0 6px;
   color: #e4c891;
 }
 .transaction-heading > div > span {
   color: #aaa18e;
-  font-size: 9px;
+  font-size: 11px;
   line-height: 1.5;
   display: block;
 }
@@ -886,7 +897,7 @@
   padding: 10px;
   border-radius: 0;
   margin-top: 20px;
-  font-size: 10px;
+  font-size: 12px;
 }
 .transaction-details {
   margin: 20px 0;
@@ -899,13 +910,13 @@
   padding: 8px 0;
 }
 .transaction-details dt {
-  font-size: 10px;
+  font-size: 12px;
   color: #a59f95;
 }
 .transaction-details dd {
   margin: 0;
   text-align: right;
-  font-size: 11px;
+  font-size: 12px;
   color: #e4dccd;
   overflow-wrap: anywhere;
   min-width: 0;
@@ -916,7 +927,7 @@
   color: #ffca83;
 }
 .transaction-details code {
-  font-size: 10px;
+  font-size: 11px;
 }
 .payment-options {
   display: flex;
@@ -924,7 +935,7 @@
 }
 .payment-options .button {
   flex: 1;
-  font-size: 10px;
+  font-size: 12px;
   padding: 11px 8px;
   background: #2b2419;
   border-color: #5d4d30;
@@ -933,8 +944,8 @@
 }
 .payment-note {
   color: #a39987;
-  font-size: 8px;
-  line-height: 1.7;
+  font-size: 11px;
+  line-height: 1.6;
   margin: 10px 0 17px;
 }
 .transaction-reference {
@@ -944,12 +955,12 @@
   align-items: center;
   border-top: 1px dashed #d4bb762d;
   padding-top: 14px;
-  font-size: 7px;
-  letter-spacing: 1px;
+  font-size: 11px;
+  letter-spacing: 0.8px;
   color: #958770;
 }
 .transaction-reference code {
-  font-size: 9px;
+  font-size: 11px;
   overflow-wrap: anywhere;
   letter-spacing: 0;
 }
@@ -979,7 +990,7 @@
 }
 .receipt-amount > span:first-child {
   grid-column: 1 / -1;
-  font-size: 10px;
+  font-size: 12px;
   color: #9aad9c;
 }
 .receipt-amount > strong {
@@ -991,7 +1002,8 @@
 .receipt-method {
   align-self: center;
   padding: 6px 9px;
-  font-size: 9px;
+  font-size: 11px;
+  font-weight: 600;
   border: 1px solid #628d5c55;
   border-radius: 0;
   color: #c1d9b6;
@@ -1004,12 +1016,12 @@
   border-top: 1px dashed #9feab429;
   padding-top: 15px;
   color: #a5ba9e;
-  font-size: 8px;
+  font-size: 11px;
 }
 .receipt-footer > span:last-child {
   margin-left: auto;
-  font-size: 9px;
-  letter-spacing: 2px;
+  font-size: 11px;
+  letter-spacing: 1.5px;
   font-weight: 700;
 }
 .purchase-error {
@@ -1045,8 +1057,8 @@
 }
 .rejection-code > span {
   color: #b99991;
-  letter-spacing: 1px;
-  font-size: 8px;
+  letter-spacing: 0.8px;
+  font-size: 11px;
 }
 .rejection-code code {
   color: #ffaba2;
@@ -1057,7 +1069,7 @@
   padding: 6px 9px;
 }
 .purchase-error > .muted {
-  font-size: 10px;
+  font-size: 11px;
   color: #bc9f96;
   margin: 17px 0 0;
   line-height: 1.6;
@@ -1151,7 +1163,7 @@
 .header-balance-label {
   display: block;
   color: #c6a77c;
-  font-size: 9px;
+  font-size: 11px;
   margin-bottom: 3px;
 }
 .header-balance strong {
