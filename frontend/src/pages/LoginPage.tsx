@@ -66,7 +66,7 @@ export function LoginPage() {
             <span>começa aqui.</span>
           </h1>
           <p>
-            Feito por Álvaro Caike e Kauan Pedreira
+            Feito por Álvaro Kayc e Kauan Pedreira
             <br className="desktop-break" /> Projeto Compass UOL
           </p>
         </div>
@@ -93,7 +93,7 @@ export function LoginPage() {
             <h2>
               Entre no jogo<span>.</span>
             </h2>
-            <p>Seu próximo upgrade está a uma conversa de distância.</p>
+            <p>Catálogo inteligente de periféricos e pagamentos instantâneos com aprovação em tempo real.</p>
           </div>
           <form onSubmit={submit} noValidate aria-busy={submitting}>
             <Input

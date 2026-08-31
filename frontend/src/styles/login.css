@@ -129,7 +129,7 @@
 }
 .login-content .input-wrap {
   height: 52px;
-  border-radius: 9px;
+  border-radius: 0;
 }
 .login-content .input-wrap input {
   font-size: 14px;
@@ -138,7 +138,7 @@
   width: 100%;
   min-height: 52px;
   margin-top: 6px;
-  border-radius: 9px;
+  border-radius: 0;
   font-size: 12px;
   letter-spacing: 0.6px;
 }
@@ -186,7 +186,7 @@
   gap: 12px;
   padding: 12px 14px;
   border: 1px solid var(--color-border);
-  border-radius: 9px;
+  border-radius: 0;
   background: #141414;
   text-align: left;
   transition:
@@ -207,7 +207,7 @@
   flex-shrink: 0;
   width: 34px;
   height: 34px;
-  border-radius: 8px;
+  border-radius: 0;
   border: 1px solid #353535;
   background: #242424;
   color: #c2c2c2;

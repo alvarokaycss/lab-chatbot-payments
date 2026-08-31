@@ -17,7 +17,7 @@ export function PurchaseErrorCard({ result }: { result: PurchaseRejectedResult }
       <p className="rejection-message">{result.mensagem}</p>
       <div className="rejection-code">
         <span>CÓDIGO DO RESULTADO</span>
-        <code>{result.codigo}</code>
+        <code>{result.codigo || result.erro}</code>
       </div>
       <p className="muted">Converse com o agente para saber como continuar.</p>
     </section>

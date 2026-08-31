@@ -29,7 +29,7 @@ export function UserPanel({
   toolEvents: ToolEvent[]
   onReconnect: () => void
 }) {
-  const { user, error, refreshUser, mode } = useAuth()
+  const { user, error, refreshUser } = useAuth()
   if (!user) return null
   const percentage =
     user.limite_total > 0
@@ -71,7 +71,7 @@ export function UserPanel({
         </div>
         <div className="wallet-footnote">
           <ShieldCheck size={11} />
-          {mode === 'demo' ? 'Valores de demonstração' : 'Informado pelo backend'}
+          Informado pelo backend
         </div>
       </div>
       {error && (
@@ -145,13 +145,11 @@ export function UserPanel({
           <span className={`status-dot ${connection.status === 'offline' ? 'offline-dot' : ''}`} />
           {connection.label}
         </span>
-        <Badge tone={connection.status === 'demo' ? 'yellow' : 'neutral'}>
-          {mode === 'demo' ? 'DEMO' : 'HTTP'}
+        <Badge tone="neutral">
+          HTTP
         </Badge>
         <p>
-          {mode === 'demo'
-            ? 'Explore todos os fluxos sem cobranças reais.'
-            : 'O frontend se comunica somente com o backend.'}
+          O frontend se comunica somente com o backend.
         </p>
         {connection.status === 'offline' && (
           <button type="button" onClick={onReconnect}>

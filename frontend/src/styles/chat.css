@@ -147,7 +147,7 @@
   position: relative;
   background: linear-gradient(140deg, #ff741527, #ff5a0005);
   border: 1px solid #ff5a0033;
-  border-radius: 15px;
+  border-radius: 0;
   color: #ff8d44;
   display: grid;
   place-items: center;
@@ -163,7 +163,7 @@
   height: 8px;
   background: var(--color-yellow);
   border: 2px solid #14120f;
-  border-radius: 50%;
+  border-radius: 0;
   right: -3px;
   bottom: 0;
 }
@@ -203,7 +203,7 @@
 .suggestion-card {
   background: #151515;
   border: 1px solid #292929;
-  border-radius: 8px;
+  border-radius: 0;
   text-align: left;
   padding: 16px 13px;
   color: #c0c0c0;
@@ -260,7 +260,7 @@
   gap: 13px;
   padding: 12px 12px 12px 17px;
   border: 1px solid #41403b;
-  border-radius: 11px;
+  border-radius: 0;
   background: #181817;
   transition: border-color 0.2s;
   box-shadow: 0 3px 25px #0003;
@@ -291,7 +291,7 @@
   border: none;
   height: 35px;
   width: 35px;
-  border-radius: 7px;
+  border-radius: 0;
   background: var(--color-orange);
   color: #180b02;
   display: grid;
@@ -340,7 +340,7 @@
   background: #30231a;
   color: #ffd1ad;
   border: 1px solid #76502f;
-  border-radius: 18px;
+  border-radius: 0;
   padding: 8px 13px;
   display: flex;
   align-items: center;
@@ -387,7 +387,7 @@
   padding: 18px 15px 0;
   border: 1px solid #5c3f26;
   background: radial-gradient(ellipse at 100% 0, #795a2420, transparent 80%), #1e1a14;
-  border-radius: 10px;
+  border-radius: 0;
 }
 .wallet-card-top {
   display: flex;
@@ -415,14 +415,14 @@
 .limit-progress {
   height: 4px;
   background: #4d3a24;
-  border-radius: 3px;
+  border-radius: 0;
   overflow: hidden;
 }
 .limit-progress > span {
   display: block;
   height: 100%;
   background: linear-gradient(90deg, #ff6600, #ffc400);
-  border-radius: 3px;
+  border-radius: 0;
   transition: width 0.2s;
 }
 .limit-total {
@@ -471,7 +471,7 @@
   height: 25px;
   flex-shrink: 0;
   border: 1px solid #36312a;
-  border-radius: 7px;
+  border-radius: 0;
   font-size: 8px;
   background: #1b1915;
 }
@@ -547,7 +547,7 @@
   flex-wrap: wrap;
   gap: 6px;
   border: 1px solid #2c2c28;
-  border-radius: 8px;
+  border-radius: 0;
   padding: 12px;
   background: #171713;
 }
@@ -600,7 +600,7 @@
   color: #ffd49b;
   border: 1px solid #ffbc4230;
   background: #ffbc4208;
-  border-radius: 8px;
+  border-radius: 0;
   margin-top: 12px;
   padding: 11px;
   font-size: 10px;
@@ -656,7 +656,7 @@
   color: #f5ddc6;
   border: 1px solid #5f3a2066;
   padding: 12px 16px;
-  border-radius: 12px 0 12px 12px;
+  border-radius: 0;
 }
 .message-bot-avatar {
   display: grid;
@@ -666,7 +666,7 @@
   border: 1px solid #ff5a0024;
   width: 32px;
   height: 32px;
-  border-radius: 9px;
+  border-radius: 0;
   flex-shrink: 0;
 }
 .interrupted-label {
@@ -687,7 +687,7 @@
 .typing-indicator > span {
   width: 4px;
   height: 4px;
-  border-radius: 50%;
+  border-radius: 0;
   background: #c9a36a;
   animation: breathe 1s ease-in-out infinite;
 }
@@ -733,7 +733,7 @@
 .product-card {
   background: #171717;
   border: 1px solid #32302b;
-  border-radius: 10px;
+  border-radius: 0;
   overflow: hidden;
   min-width: 0;
 }
@@ -785,7 +785,7 @@
   padding: 4px 5px;
   color: #c2c6ae;
   border: 1px solid #d1d5a012;
-  border-radius: 4px;
+  border-radius: 0;
 }
 .product-info {
   padding: 14px;
@@ -837,7 +837,7 @@
 }
 .transaction-card {
   border: 1px solid #514529;
-  border-radius: 12px;
+  border-radius: 0;
   background: #1c1913;
   overflow: hidden;
   padding: 20px;
@@ -852,7 +852,7 @@
   height: 38px;
   background: #ffbc4210;
   border: 1px solid #ffbc4222;
-  border-radius: 10px;
+  border-radius: 0;
   color: #eec15b;
   display: grid;
   place-items: center;
@@ -884,7 +884,7 @@
   background: #b98a2310;
   border: 1px solid #ffce4b12;
   padding: 10px;
-  border-radius: 6px;
+  border-radius: 0;
   margin-top: 20px;
   font-size: 10px;
 }
@@ -928,6 +928,7 @@
   padding: 11px 8px;
   background: #2b2419;
   border-color: #5d4d30;
+  border-radius: 0;
   color: #eed2a1;
 }
 .payment-note {
@@ -955,10 +956,12 @@
 .receipt-card {
   background: linear-gradient(140deg, #18231b, #151b17 60%);
   border-color: #38523a;
+  border-radius: 0;
 }
 .receipt-card .transaction-icon {
   background: #3ddc8410;
   border-color: #3ddc8420;
+  border-radius: 0;
   color: #7ee6a1;
 }
 .receipt-card h3 {
@@ -990,7 +993,7 @@
   padding: 6px 9px;
   font-size: 9px;
   border: 1px solid #628d5c55;
-  border-radius: 5px;
+  border-radius: 0;
   color: #c1d9b6;
   background: #5a8a3c11;
 }
@@ -1012,10 +1015,12 @@
 .purchase-error {
   background: linear-gradient(135deg, #291a18, #1c1514);
   border-color: #7b3936;
+  border-radius: 0;
 }
 .purchase-error .transaction-icon {
   background: #ff4d4f0d;
   border-color: #ff4d4f22;
+  border-radius: 0;
   color: #ff9191;
 }
 .purchase-error h3 {
@@ -1047,7 +1052,7 @@
   color: #ffaba2;
   background: #ff4d4f0c;
   border: 1px solid #ff4d4f20;
-  border-radius: 4px;
+  border-radius: 0;
   font-size: 11px;
   padding: 6px 9px;
 }
@@ -1059,7 +1064,7 @@
 }
 .generic-tool {
   border: 1px solid #333;
-  border-radius: 8px;
+  border-radius: 0;
   background: #161616;
   padding: 13px;
 }
@@ -1130,7 +1135,7 @@
   min-height: 44px;
   padding: 8px 12px;
   border: 1px solid #684424;
-  border-radius: 9px;
+  border-radius: 0;
   background: #251c12;
   color: #ffd18c;
   flex-shrink: 0;

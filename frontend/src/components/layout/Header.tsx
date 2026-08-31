@@ -11,7 +11,7 @@ export function Header({
   onProfile: () => void
   profileOpen: boolean
 }) {
-  const { user, logout, mode, error } = useAuth()
+  const { user, logout, error } = useAuth()
   const limit = user ? formatCurrency(user.limite_disponivel) : '—'
 
   return (
@@ -25,7 +25,7 @@ export function Header({
       <div className="header-actions">
         <span className="header-shield">
           <ShieldCheck size={15} />
-          {mode === 'demo' ? 'Ambiente de teste' : 'Sessão autenticada'}
+          Sessão autenticada
         </span>
         <div className="header-user">
           <Avatar name={user?.name ?? ''} />
