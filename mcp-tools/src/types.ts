@@ -15,11 +15,17 @@ export interface CatalogListResult {
   produtos: Product[];
 }
 
+export interface ToolContext {
+  userId: string;
+  conversationId: string;
+}
+
 export type IntentStatus = "pendente" | "paga" | "expirada" | "recusada";
 
 export interface Intent {
   intencao_id: string;
-  user_id?: string;
+  user_id: string;
+  conversation_id: string;
   produto_id: string;
   quantidade: number;
   valor_total: number;
@@ -28,6 +34,8 @@ export interface Intent {
   expira_em: string;
   created_at: string;
 }
+
+export type PublicIntent = Omit<Intent, "user_id" | "conversation_id" | "created_at">;
 
 export type PaymentMethod = "cartao" | "pix";
 
@@ -60,7 +68,6 @@ export interface User {
   id: string;
   username: string;
   name: string;
-  password: string;
   limite_total: number;
   limite_disponivel: number;
 }
