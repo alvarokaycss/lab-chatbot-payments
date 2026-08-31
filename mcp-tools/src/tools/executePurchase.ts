@@ -1,7 +1,7 @@
 import { z } from "zod";
 import { randomUUID } from "node:crypto";
-import type { PurchaseResult } from "../types.js";
-import { decrementStock } from "../db/catalog.js";
+import type { ToolContext, PurchaseResult, PaymentMethod } from "../types.js";
+import { findProductById, decrementStock } from "../db/catalog.js";
 import { hasSufficientLimit, deductUserLimit } from "../db/users.js";
 import {
   findIntentById,
@@ -14,28 +14,36 @@ export const executePurchaseSchema = z.object({
     .string()
     .describe("Identificador da intenção previamente gerada por registrar_intencao (ex: 'int_a1b2c3')"),
   metodo_pagamento: z
-    .enum(["cartao", "pix"])
+    .string()
     .describe("Método de pagamento escolhido pelo usuário ('cartao' ou 'pix')")
 });
 
+export function generateTransactionId(): string {
+  const hash = randomUUID().replace(/-/g, "").substring(0, 8);
+  return `tx_${hash}`;
+}
+
 export function handleExecutePurchase(
   args: z.infer<typeof executePurchaseSchema>,
-  userId?: string
+  context: ToolContext = { userId: "usr_std_02", conversationId: "default_conv" }
 ): PurchaseResult {
   const intent = findIntentById(args.intencao_id);
   if (!intent) {
     return {
       status: "recusado",
       erro: "INTENCAO_INVALIDA",
-      mensagem: "A intenção de compra informada é inválida ou inexistente."
+      mensagem: "Intenção de compra não encontrada ou inexistente."
     };
   }
 
-  if (userId && intent.user_id && intent.user_id !== userId) {
+  if (
+    intent.user_id !== context.userId ||
+    intent.conversation_id !== context.conversationId
+  ) {
     return {
       status: "recusado",
       erro: "INTENCAO_INVALIDA",
-      mensagem: "A intenção de compra não pertence ao usuário autenticado."
+      mensagem: "Intenção de compra não pertence à sessão atual do usuário."
     };
   }
 
@@ -43,16 +51,16 @@ export function handleExecutePurchase(
     return {
       status: "recusado",
       erro: "INTENCAO_JA_PAGA",
-      mensagem: "Esta intenção de compra já foi paga anteriormente."
+      mensagem: "Esta intenção de compra já foi paga e concluída anteriormente."
     };
   }
 
-  if (isIntentExpired(intent)) {
+  if (isIntentExpired(intent) || intent.status === "expirada") {
     updateIntentStatus(intent.intencao_id, "expirada");
     return {
       status: "recusado",
       erro: "INTENCAO_EXPIRADA",
-      mensagem: "Esta intenção de compra expirou. Por favor, solicite um novo registro de intenção."
+      mensagem: "O prazo de validade desta intenção de compra expirou."
     };
   }
 
@@ -60,40 +68,38 @@ export function handleExecutePurchase(
     return {
       status: "recusado",
       erro: "METODO_INVALIDO",
-      mensagem: "Método de pagamento inválido. Aceitamos apenas 'cartao' ou 'pix'."
+      mensagem: "Método de pagamento inválido. Aceitos apenas 'cartao' ou 'pix'."
     };
   }
 
-  const effectiveUserId = userId || intent.user_id || "usr_std_02";
-  if (!hasSufficientLimit(effectiveUserId, intent.valor_total)) {
+  const product = findProductById(intent.produto_id);
+  if (!product || product.estoque < intent.quantidade) {
     return {
       status: "recusado",
-      erro: "LIMITE_EXCEDIDO",
-      mensagem: `Não foi possível realizar a compra. O valor total de R$ ${intent.valor_total.toFixed(2)} excede o limite disponível.`
+      erro: "INTENCAO_INVALIDA",
+      mensagem: "Estoque insuficiente para liquidar esta compra no momento."
     };
   }
 
-  const limiteRestante = deductUserLimit(effectiveUserId, intent.valor_total);
-  if (limiteRestante === false) {
+  if (!hasSufficientLimit(context.userId, intent.valor_total)) {
     return {
       status: "recusado",
       erro: "LIMITE_EXCEDIDO",
-      mensagem: "Falha ao debitar limite do usuário."
+      mensagem: "Saldo/limite de crédito insuficiente para concluir a compra."
     };
   }
 
   decrementStock(intent.produto_id, intent.quantidade);
+  const limite_restante = deductUserLimit(context.userId, intent.valor_total);
   updateIntentStatus(intent.intencao_id, "paga");
-
-  const transacao_id = `tx_${randomUUID().replace(/-/g, "").substring(0, 8)}`;
 
   return {
     status: "aprovado",
-    transacao_id,
+    transacao_id: generateTransactionId(),
     intencao_id: intent.intencao_id,
     valor: intent.valor_total,
-    metodo_pagamento: args.metodo_pagamento,
-    limite_restante: limiteRestante,
+    metodo_pagamento: args.metodo_pagamento as PaymentMethod,
+    limite_restante: limite_restante as number,
     data: new Date().toISOString()
   };
 }

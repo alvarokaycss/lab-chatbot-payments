@@ -7,24 +7,21 @@ export const initialUsers: User[] = [
   {
     id: "usr_vip_01",
     username: "cliente_vip",
-    name: "Maria Silva",
-    password: "123",
+    name: "Maria Alyce",
     limite_total: 15000.00,
     limite_disponivel: 15000.00
   },
   {
     id: "usr_std_02",
     username: "cliente_padrao",
-    name: "João Souza",
-    password: "123",
+    name: "Pedro Leale",
     limite_total: 2000.00,
     limite_disponivel: 2000.00
   },
   {
     id: "usr_low_03",
     username: "cliente_sem_saldo",
-    name: "Carlos Lima",
-    password: "123",
+    name: "Gabriel Missio",
     limite_total: 100.00,
     limite_disponivel: 100.00
   }
