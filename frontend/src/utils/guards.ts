@@ -64,7 +64,12 @@ export function isApproved(value: unknown): value is PurchaseApprovedResult {
   )
 }
 export function isRejected(value: unknown): value is PurchaseRejectedResult {
-  return isRecord(value) && value.status === 'recusado' && strings(value, ['codigo', 'mensagem'])
+  return (
+    isRecord(value) &&
+    value.status === 'recusado' &&
+    typeof value.mensagem === 'string' &&
+    (typeof value.codigo === 'string' || typeof value.erro === 'string')
+  )
 }
 export function isToolEvent(value: unknown): value is ToolEvent {
   return isRecord(value) && typeof value.name === 'string' && isRecord(value.arguments)

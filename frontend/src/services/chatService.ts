@@ -3,6 +3,7 @@ import type { SendChatOptions } from '../types/chat'
 import { ApiError, OFFLINE_MESSAGE } from '../types/api'
 import { checkResponse, requestSignal } from './apiClient'
 import { consumeNdjson } from './ndjson'
+
 export async function sendChatMessage({
   messages,
   token,
@@ -11,18 +12,16 @@ export async function sendChatMessage({
 }: SendChatOptions): Promise<void> {
   let response: Response
   try {
-    response = env.useMocks
-      ? await (await import('./mockApi')).mockApi.chat(messages, token, signal)
-      : await fetch(`${env.apiUrl}/api/chat`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            Accept: 'application/x-ndjson',
-            Authorization: `Bearer ${token}`,
-          },
-          body: JSON.stringify({ messages }),
-          signal: requestSignal(signal, 180000),
-        })
+    response = await fetch(`${env.apiUrl}/api/chat`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/x-ndjson',
+        Authorization: `Bearer ${token}`,
+      },
+      body: JSON.stringify({ messages }),
+      signal: requestSignal(signal, 180000),
+    })
   } catch (cause) {
     if (signal?.aborted || cause instanceof ApiError) throw cause
     throw new ApiError(OFFLINE_MESSAGE)
@@ -34,3 +33,4 @@ export async function sendChatMessage({
     throw new ApiError('O backend deve responder com Content-Type application/x-ndjson.')
   await consumeNdjson(response.body, onEvent, signal)
 }
+

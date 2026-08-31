@@ -1,4 +1,4 @@
-export type ConnectionStatus = 'checking' | 'online' | 'offline' | 'demo'
+export type ConnectionStatus = 'checking' | 'online' | 'offline'
 export interface HealthStatus {
   status: ConnectionStatus
   label: string

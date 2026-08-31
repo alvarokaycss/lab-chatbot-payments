@@ -142,7 +142,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         isLoading,
         error,
         isAuthenticated: !!token && !!user,
-        mode: authService.mode,
         login,
         logout,
         refreshUser,

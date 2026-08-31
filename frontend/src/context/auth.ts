@@ -6,7 +6,6 @@ export interface AuthState {
   isAuthenticated: boolean
   isLoading: boolean
   error: string | null
-  mode: 'demo' | 'api'
   login: (credentials: LoginRequest) => Promise<void>
   logout: () => void
   refreshUser: () => Promise<void>

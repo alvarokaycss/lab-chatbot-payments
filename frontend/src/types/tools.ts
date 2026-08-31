@@ -30,7 +30,8 @@ export interface PurchaseApprovedResult {
 }
 export interface PurchaseRejectedResult {
   status: 'recusado'
-  codigo: string
+  codigo?: string
+  erro?: string
   mensagem: string
 }
 export interface ToolEvent {

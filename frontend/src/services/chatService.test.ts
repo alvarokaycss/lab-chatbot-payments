@@ -1,7 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 import { sendChatMessage } from './chatService'
 import { authService } from './authService'
-import { env } from '../config/env'
 import { AUTH_EXPIRED_EVENT, OFFLINE_MESSAGE } from '../types/api'
 const options = {
   messages: [{ role: 'user' as const, content: 'O que vocês têm à venda?' }],
@@ -10,12 +9,10 @@ const options = {
 }
 const fetchMock = vi.fn()
 beforeEach(() => {
-  env.useMocks = false
   vi.stubGlobal('fetch', fetchMock)
   vi.stubGlobal('window', new EventTarget())
 })
 afterEach(() => {
-  env.useMocks = true
   vi.unstubAllGlobals()
   vi.resetAllMocks()
 })
