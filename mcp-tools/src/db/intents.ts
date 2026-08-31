@@ -1,6 +1,6 @@
 import "@dotenvx/dotenvx/config";
 import { randomUUID } from "node:crypto";
-import type { Intent, IntentStatus } from "../types.js";
+import type { Intent, IntentStatus, ToolContext } from "../types.js";
 
 // Store em memória das intenções de compra registradas
 const intentsStore = new Map<string, Intent>();
@@ -25,13 +25,15 @@ export function generateIntentId(): string {
   return `int_${hash}`;
 }
 
-export function registerNewIntent(params: {
-  produto_id: string;
-  quantidade: number;
-  valor_total: number;
-  user_id?: string;
-  moeda?: string;
-}): Intent {
+export function registerNewIntent(
+  params: {
+    produto_id: string;
+    quantidade: number;
+    valor_total: number;
+    moeda?: string;
+  },
+  context: ToolContext
+): Intent {
   const intencao_id = generateIntentId();
   const now = new Date();
   const expira_em = new Date(
@@ -40,7 +42,8 @@ export function registerNewIntent(params: {
 
   const intent: Intent = {
     intencao_id,
-    user_id: params.user_id,
+    user_id: context.userId,
+    conversation_id: context.conversationId,
     produto_id: params.produto_id,
     quantidade: params.quantidade,
     valor_total: Number(params.valor_total.toFixed(2)),

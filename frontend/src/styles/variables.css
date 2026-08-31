@@ -1,0 +1,21 @@
+:root {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  color-scheme: dark;
+  --color-bg: #080808;
+  --color-bg-soft: #111111;
+  --color-surface: #151515;
+  --color-surface-hover: #1d1d1d;
+  --color-orange: #ff5a00;
+  --color-orange-hover: #ff7426;
+  --color-yellow: #ffc400;
+  --color-yellow-soft: #ffd84d;
+  --color-text: #f7f7f7;
+  --color-text-muted: #9d9d9d;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-success: #3ddc84;
+  --color-danger: #ff4d4f;
+  --color-warning: #ffc400;
+  --radius: 0px;
+  --font-display: 'Arial Black', 'Segoe UI', sans-serif;
+}
+
