@@ -20,6 +20,7 @@ A divisão do trabalho foi proposta por **Kauan Pedreira**, distribuindo as fren
 - **Kauan Pedreira:**
   - Definição do fluxo de branches (`main`, `stage`, `dev`) e padrão de Conventional Commits.
   - Frontend (`frontend`): interface em React + Vite com tela de login, visualização de saldo e chat com streaming.
+  - Preparação e implementação da integração frontend-backend, incluindo autenticação, consumo da API, tratamento de estados e respostas do agente via streaming.
 
 ---
 
