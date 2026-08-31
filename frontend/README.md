@@ -39,11 +39,11 @@ Não versione o `.env` nem coloque segredos em variáveis `VITE_`: elas ficam di
 
 Selecione um perfil na tela de login e clique em **Entrar na Nexus**. A senha pública de teste é `123`.
 
-| Usuário             | Perfil      | Limite simulado |
+| Perfil              | Nome        | Limite          |
 | ------------------- | ----------- | --------------- |
-| `cliente_vip`       | Maria Silva | R$ 15.000,00    |
-| `cliente_padrao`    | João Souza  | R$ 2.000,00     |
-| `cliente_sem_saldo` | Carlos Lima | R$ 100,00       |
+| `cliente_vip`       | Maria Alyce | R$ 15.000,00    |
+| `cliente_padrao`    | Pedro Leale  | R$ 2.000,00     |
+| `cliente_sem_saldo` | Gabriel Missio | R$ 100,00       |
 
 Com João, envie uma mensagem por vez:
 

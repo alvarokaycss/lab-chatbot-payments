@@ -22,11 +22,11 @@ Crie o arquivo `.env` baseado no `.env.example`:
 
 ## Usuários de Teste
 
-| Username | Senha | Nome | Limite Inicial |
+| Usuário | Senha | Nome | Limite Inicial |
 |---|---|---|---|
-| `cliente_vip` | `123` | Maria Silva | R$ 15.000,00 |
-| `cliente_padrao` | `123` | João Souza | R$ 2.000,00 |
-| `cliente_sem_saldo` | `123` | Carlos Lima | R$ 100,00 |
+| `cliente_vip` | `123` | Maria Alyce | R$ 15.000,00 |
+| `cliente_padrao` | `123` | Pedro Leale | R$ 2.000,00 |
+| `cliente_sem_saldo` | `123` | Gabriel Missio | R$ 100,00 |
 
 ## Como Rodar e Testar
 
