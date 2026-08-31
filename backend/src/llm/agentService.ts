@@ -7,6 +7,7 @@ import {
   type ToolCallItem
 } from "../mcp/client.js";
 import { SALES_SYSTEM_PROMPT } from "./prompts.js";
+import { deductUserBalance } from "../auth/users.js";
 
 const OLLAMA_URL = process.env.OLLAMA_URL ?? "http://localhost:11434";
 const OLLAMA_MODEL = process.env.OLLAMA_MODEL ?? "qwen3:1.7b";
@@ -21,17 +22,22 @@ export interface ConversationMessage {
 export interface AgentStreamCallbacks {
   onLine: (data: Record<string, unknown>) => void;
   signal?: AbortSignal;
+  userId?: string;
+  conversationId?: string;
 }
 
 export async function streamAgentChat(
   messages: ConversationMessage[],
   callbacks: AgentStreamCallbacks
-): Promise<void> {
+): Promise<ConversationMessage[]> {
   let mcpClient: Client | undefined;
   let ollamaTools: unknown[] | undefined;
 
   try {
-    mcpClient = await connectMcpClient();
+    mcpClient = await connectMcpClient({
+      userId: callbacks.userId,
+      conversationId: callbacks.conversationId
+    });
     const { tools } = await mcpClient.listTools();
     ollamaTools = toOllamaTools(tools);
   } catch (error) {
@@ -92,7 +98,12 @@ export async function streamAgentChat(
 
             if (tokenText) {
               accumulatedContent += tokenText;
-              callbacks.onLine(chunk);
+              callbacks.onLine({
+                message: {
+                  role: "assistant",
+                  content: tokenText
+                }
+              });
             }
 
             if (chunk.message?.tool_calls) {
@@ -104,6 +115,12 @@ export async function streamAgentChat(
       }
 
       if (capturedCalls.length === 0) {
+        if (accumulatedContent) {
+          convo.push({
+            role: "assistant",
+            content: accumulatedContent
+          });
+        }
         callbacks.onLine({ done: true });
         break;
       }
@@ -115,9 +132,43 @@ export async function streamAgentChat(
       });
 
       for (const call of capturedCalls) {
+        if (
+          callbacks.userId &&
+          (call.function.name === "registrar_intencao" ||
+            call.function.name === "realizar_compra")
+        ) {
+          call.function.arguments = {
+            ...call.function.arguments,
+            user_id: callbacks.userId
+          };
+        }
+        if (
+          callbacks.conversationId &&
+          (call.function.name === "registrar_intencao" ||
+            call.function.name === "realizar_compra")
+        ) {
+          call.function.arguments = {
+            ...call.function.arguments,
+            conversation_id: callbacks.conversationId
+          };
+        }
+
         const toolResult = mcpClient
           ? await runMcpTool(mcpClient, call)
           : { error: "Servidor MCP indisponivel" };
+
+        if (
+          call.function.name === "realizar_compra" &&
+          toolResult &&
+          typeof toolResult === "object" &&
+          (toolResult as Record<string, unknown>).status === "aprovado" &&
+          callbacks.userId
+        ) {
+          const valor = (toolResult as Record<string, unknown>).valor;
+          if (typeof valor === "number") {
+            deductUserBalance(callbacks.userId, valor);
+          }
+        }
 
         convo.push({
           role: "tool",
@@ -145,4 +196,6 @@ export async function streamAgentChat(
       await mcpClient.close();
     }
   }
+
+  return convo;
 }

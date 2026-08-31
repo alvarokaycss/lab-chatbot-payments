@@ -4,6 +4,19 @@ import { StreamableHTTPClientTransport } from "@modelcontextprotocol/sdk/client/
 
 const MCP_URL = process.env.MCP_URL ?? "http://localhost:3001/mcp";
 
+export interface McpContext {
+  userId?: string;
+  conversationId?: string;
+}
+
+export interface McpUserProfile {
+  id: string;
+  username: string;
+  name: string;
+  limite_total: number;
+  limite_disponivel: number;
+}
+
 export interface OllamaFunctionParameter {
   type: string;
   properties?: Record<string, unknown>;
@@ -26,15 +39,40 @@ export interface ToolCallItem {
   };
 }
 
-export async function connectMcpClient(): Promise<Client> {
+export async function connectMcpClient(context?: McpContext): Promise<Client> {
   const client = new Client({
     name: "chatbot-backend-client",
     version: "1.0.0"
   });
 
-  const transport = new StreamableHTTPClientTransport(new URL(MCP_URL));
+  const headers: Record<string, string> = {};
+
+  if (context?.userId) {
+    headers["x-user-id"] = context.userId;
+  }
+
+  if (context?.conversationId) {
+    headers["x-conversation-id"] = context.conversationId;
+  }
+
+  const transport = new StreamableHTTPClientTransport(new URL(MCP_URL), {
+    requestInit: Object.keys(headers).length > 0 ? { headers } : undefined
+  });
   await client.connect(transport);
   return client;
+}
+
+export async function getMcpUserProfile(userId: string): Promise<McpUserProfile | null> {
+  try {
+    const baseUrl = process.env.MCP_BASE_URL ?? new URL(MCP_URL).origin;
+    const res = await fetch(`${baseUrl}/internal/users/${encodeURIComponent(userId)}`);
+    if (!res.ok) {
+      return null;
+    }
+    return (await res.json()) as McpUserProfile;
+  } catch {
+    return null;
+  }
 }
 
 export function toOllamaTools(

@@ -9,7 +9,7 @@ const initialUsers: User[] = [
   {
     id: "usr_vip_01",
     username: "cliente_vip",
-    name: "Maria Silva",
+    name: "Maria Alyce",
     passwordHash: hashPassword("123"),
     limite_total: 15000.0,
     limite_disponivel: 15000.0
@@ -17,7 +17,7 @@ const initialUsers: User[] = [
   {
     id: "usr_std_02",
     username: "cliente_padrao",
-    name: "João Souza",
+    name: "Pedro Leale",
     passwordHash: hashPassword("123"),
     limite_total: 2000.0,
     limite_disponivel: 2000.0
@@ -25,7 +25,7 @@ const initialUsers: User[] = [
   {
     id: "usr_low_03",
     username: "cliente_sem_saldo",
-    name: "Carlos Lima",
+    name: "Gabriel Missio",
     passwordHash: hashPassword("123"),
     limite_total: 100.0,
     limite_disponivel: 100.0

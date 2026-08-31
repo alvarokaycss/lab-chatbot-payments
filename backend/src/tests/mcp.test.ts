@@ -3,7 +3,8 @@ import "@dotenvx/dotenvx/config";
 import {
   connectMcpClient,
   toOllamaTools,
-  runMcpTool
+  runMcpTool,
+  getMcpUserProfile
 } from "../mcp/client.js";
 
 async function runMcpTests() {
@@ -11,9 +12,14 @@ async function runMcpTests() {
   let client;
 
   try {
-    client = await connectMcpClient();
+    const testContext = {
+      userId: "usr_std_02",
+      conversationId: "conv_test_12345"
+    };
+
+    client = await connectMcpClient(testContext);
     assert.ok(client, "Cliente MCP deve ser instanciado e conectado");
-    console.log("[OK] Conexao com Servidor MCP (http://localhost:3001/mcp)");
+    console.log("[OK] Conexao com Servidor MCP (http://localhost:3001/mcp) com contexto e headers de autenticacao");
 
     const { tools } = await client.listTools();
     assert.ok(Array.isArray(tools) && tools.length >= 3, "Deve listar pelo menos as 3 tools");
@@ -41,6 +47,20 @@ async function runMcpTests() {
     assert.ok(typeof resultCatalog === "object" && resultCatalog !== null);
     assert.ok("produtos" in (resultCatalog as Record<string, unknown>));
     console.log("[OK] Execucao remota da tool listar_catalogo via MCP Client");
+
+    console.log("Iniciando testes de perfil de usuario MCP via endpoint interno...");
+    const userProfile = await getMcpUserProfile("usr_std_02");
+    assert.ok(userProfile, "getMcpUserProfile('usr_std_02') deve retornar dados do usuario");
+    assert.strictEqual(userProfile.id, "usr_std_02");
+    assert.ok(userProfile.username, "Perfil deve conter username");
+    assert.ok(userProfile.name, "Perfil deve conter name");
+    assert.ok(typeof userProfile.limite_total === "number", "limite_total deve ser number");
+    assert.ok(typeof userProfile.limite_disponivel === "number", "limite_disponivel deve ser number");
+    console.log(`[OK] Perfil obtido com sucesso para ${userProfile.name} (limite: R$ ${userProfile.limite_disponivel}/${userProfile.limite_total})`);
+
+    const invalidProfile = await getMcpUserProfile("usr_inexistente_999");
+    assert.strictEqual(invalidProfile, null, "getMcpUserProfile com usuario inexistente deve retornar null");
+    console.log("[OK] Perfil de usuario inexistente retornou null como esperado");
 
     console.log("\nTodos os testes do MCP Client passaram com sucesso.");
   } catch (error) {

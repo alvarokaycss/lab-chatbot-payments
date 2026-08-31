@@ -1,11 +1,10 @@
 import { Router, type Request, type Response } from "express";
+import { z } from "zod";
 import { requireAuth } from "../auth/middleware.js";
 import {
   streamAgentChat,
   type ConversationMessage
 } from "../llm/agentService.js";
-
-import { z } from "zod";
 
 const messageSchema = z.object({
   role: z.enum(["user", "assistant", "system", "tool"]),
@@ -14,6 +13,7 @@ const messageSchema = z.object({
 });
 
 const chatSchema = z.object({
+  conversation_id: z.string().optional(),
   messages: z.array(messageSchema).min(1)
 });
 
@@ -24,11 +24,18 @@ chatRouter.post("/", requireAuth, async (req: Request, res: Response) => {
 
   if (!parseResult.success) {
     return res.status(400).json({
-      error: "O campo 'messages' deve ser um array nao-vazio de mensagens."
+      error: "O payload deve conter 'messages' (array não-vazio de mensagens)."
     });
   }
 
-  const { messages } = parseResult.data;
+  const { conversation_id, messages } = parseResult.data;
+  const userId = req.user?.id;
+
+  if (!userId) {
+    return res.status(401).json({
+      error: "Usuário não autenticado."
+    });
+  }
 
   res.setHeader("Content-Type", "application/x-ndjson");
   res.setHeader("Cache-Control", "no-cache");
@@ -50,7 +57,9 @@ chatRouter.post("/", requireAuth, async (req: Request, res: Response) => {
   try {
     await streamAgentChat(messages as ConversationMessage[], {
       onLine,
-      signal: abortController.signal
+      signal: abortController.signal,
+      userId,
+      conversationId: conversation_id || "conv_default"
     });
   } catch (error) {
     if (!res.writableEnded) {
@@ -65,3 +74,5 @@ chatRouter.post("/", requireAuth, async (req: Request, res: Response) => {
     }
   }
 });
+
+
