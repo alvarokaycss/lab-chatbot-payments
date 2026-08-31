@@ -7,6 +7,7 @@ import { fileURLToPath } from "node:url";
 import path from "node:path";
 
 import { findUserById } from "./db/users.js";
+import { logAudit } from "./audit.js";
 import {
   listCatalogSchema,
   handleListCatalog,
@@ -74,7 +75,11 @@ app.post("/mcp", async (req, res) => {
       description: "Lista os produtos disponíveis no catálogo com preços em BRL, estoque e filtro opcional por categoria.",
       inputSchema: listCatalogSchema.shape
     },
-    async ({ categoria }) => json(handleListCatalog({ categoria }))
+    async ({ categoria }) => {
+      const result = handleListCatalog({ categoria });
+      logAudit({ userId, conversationId, tool: "listar_catalogo", args: { categoria }, result });
+      return json(result);
+    }
   );
 
   mcp.registerTool(
@@ -85,9 +90,13 @@ app.post("/mcp", async (req, res) => {
     },
     async (args) => {
       if (!userId || !conversationId) {
-        return json({ error: "Contexto de autenticação ausente." });
+        const errResult = { error: "Contexto de autenticação ausente." };
+        logAudit({ userId, conversationId, tool: "registrar_intencao", args, result: errResult });
+        return json(errResult);
       }
-      return json(handleRegisterIntent(args, { userId, conversationId }));
+      const result = handleRegisterIntent(args, { userId, conversationId });
+      logAudit({ userId, conversationId, tool: "registrar_intencao", args, result });
+      return json(result);
     }
   );
 
@@ -99,9 +108,13 @@ app.post("/mcp", async (req, res) => {
     },
     async (args) => {
       if (!userId || !conversationId) {
-        return json({ error: "Contexto de autenticação ausente." });
+        const errResult = { error: "Contexto de autenticação ausente." };
+        logAudit({ userId, conversationId, tool: "realizar_compra", args, result: errResult });
+        return json(errResult);
       }
-      return json(handleExecutePurchase(args, { userId, conversationId }));
+      const result = handleExecutePurchase(args, { userId, conversationId });
+      logAudit({ userId, conversationId, tool: "realizar_compra", args, result });
+      return json(result);
     }
   );
 

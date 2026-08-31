@@ -26,6 +26,13 @@ Crie o arquivo `.env` baseado no `.env.example`:
 2. **`registrar_intencao`**: Gera a reserva de compra (`int_xxxxxxxx`), calcula o valor no backend e define a expiração.
 3. **`realizar_compra`**: Efetiva a compra por `cartao` ou `pix` validando intenção, expiração, duplicidade e limite do usuário.
 
+## Trilha de Auditoria (`[AUDIT]`)
+
+O servidor registra logs estruturados para cada chamada de ferramenta com o prefixo `[AUDIT]`, informando timestamp, identificador do usuário, ferramenta invocada, parâmetros e o resultado obtido.
+
+> **Nota de Arquitetura:**  
+> Optou-se intencionalmente por uma implementação nativa e leve via `stdout`/console estruturado no lugar de bibliotecas como Pino ou Winston. Apenas garantindo a visibilidade e avaliação dos dados no terminal.
+
 ## Como Rodar e Testar
 
 ```bash
@@ -46,3 +53,4 @@ npm run dev
 
 2. **Descoberta de Ferramentas (`tools/list`)**
    ![Tools List Postman](docs/screenshots/tools-list.png)
+
