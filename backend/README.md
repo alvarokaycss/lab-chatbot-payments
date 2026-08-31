@@ -6,6 +6,7 @@ API responsável pela autenticação de usuários, controle de saldos/limites em
 - **Healthcheck:** `GET /health`
 - **Autenticação:** `POST /api/auth/login`
 - **Chat (NDJSON Stream):** `POST /api/chat`
+- **Responsável:** Álvaro Kayc
 
 ## Variáveis de Ambiente (`.env`)
 
@@ -55,7 +56,7 @@ npm run dev
 ```json
 {
   "token": "eyJhbGci...",
-  "user": { "id": "usr_std_02", "name": "João Souza", "limite_disponivel": 2000 },
+  "user": { "id": "usr_std_02", "name": "Pedro Leale", "limite_disponivel": 2000 },
   "expiresIn": "1h"
 }
 ```

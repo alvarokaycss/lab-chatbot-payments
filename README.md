@@ -37,12 +37,17 @@ A divisão do trabalho foi proposta por **Kauan Pedreira**, distribuindo as fren
 | **Ollama** | Local | `11434` | Modelo LLM local (`qwen3:1.7b`) |
 | **Frontend** | `frontend/` | `5173` | Interface React + Vite |
 
-> Para mais detalhes técnicos (e visualização dos testes) de cada módulo, veja os READMEs do [backend](backend/README.md) e do [mcp-tools](mcp-tools/README.md).
+> Para mais detalhes técnicos e visualização dos testes de cada módulo, veja os READMEs específicos:
+> - [Backend API](backend/README.md) (Responsável: Álvaro Kayc)
+> - [Servidor MCP Tools](mcp-tools/README.md) (Responsável: Álvaro Kayc)
+> - [Frontend React](frontend/README.md) (Responsável: Kauan Pedreira)
 
-## Como Rodar
+---
+
+## 4. Como Rodar a Aplicação Completa
 
 ```bash
-# 1. Pré-requisito: Ollama rodando o modelo
+# 1. Pré-requisito: Ollama rodando o modelo local
 ollama run qwen3:1.7b
 
 # 2. Iniciar o Servidor MCP (Terminal 1)
@@ -54,20 +59,38 @@ npm run dev
 cd backend
 npm install
 npm run dev
+
+# 4. Iniciar o Frontend (Terminal 3)
+cd frontend
+npm install
+npm run dev
 ```
 
-## Testes Automatizados
+Acesse o chat em [http://localhost:5173](http://localhost:5173).
+
+---
+
+## 5. Testes Automatizados
 
 ```bash
-# Testar ferramentas MCP
+# Testar as 3 ferramentas MCP e regras de negócio
 cd mcp-tools && npm run test:tools
 
-# Testar autenticação do backend
+# Testar autenticação, limites e rotas do backend
 cd backend && npm test
+
+# Testar cliente de chat e streaming do frontend
+cd frontend && npm test
 ```
 
-## Screenshots da Entrega
+---
 
-- [ ] Compra aprovada com Cartão e PIX.
-- [ ] Compra recusada por limite insuficiente.
-- [ ] Recusa de `intencao_id` inválido ou inexistente.
+## 6. Screenshots da Entrega (Requisitos do Desafio)
+
+Conforme especificado no `desafio.md`, a entrega contempla as evidências visuais dos 4 cenários obrigatórios:
+
+1. **Compra aprovada via PIX:** Sucesso na liquidação via PIX com geração de comprovante e débito de limite.
+2. **Compra aprovada via Cartão:** Sucesso na liquidação via cartão de crédito com atualização de saldo.
+3. **Recusa por limite excedido (`LIMITE_EXCEDIDO`):** Tentativa de compra com valor acima do saldo disponível (ex: perfil `cliente_sem_saldo`).
+4. **Recusa por intenção inválida (`INTENCAO_INVALIDA`):** Tentativa de compra com `intencao_id` inventado, expirado ou pertencente a outra sessão.
+

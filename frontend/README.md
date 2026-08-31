@@ -1,110 +1,85 @@
-# Nexus Store — Frontend
+# Frontend (`frontend`)
 
-Interface de uma loja de games com compras pelo chat. Permite consultar produtos, solicitar compras e acompanhar comprovantes, recusas e limite disponível.
+Interface interativa desenvolvida em **React 19 + TypeScript + Vite** para a loja gamer **Nexus Store**, permitindo navegar no catálogo de produtos, registrar intenções de compra e efetuar pagamentos com IA em tempo real.
 
-Projeto acadêmico da Compass UOL, desenvolvido por **Álvaro Caike e Kauan Pedreira**.
+- **Porta padrão:** `5173`
+- **URL da aplicação:** `http://localhost:5173`
+- **Responsável:** Kauan Pedreira
+- **Tecnologias:** React 19, TypeScript, Vite, React Router, CSS modular, Lucide React, Vitest, ESLint
 
-## Tecnologias
+---
 
-React 19, TypeScript, Vite, React Router, CSS e Lucide React. Testes com Vitest; lint e formatação com ESLint e Prettier.
+## 1. Contribuições e Funcionalidades
 
-## Como executar
+Desenvolvido por **Kauan Pedreira**, o frontend contempla:
 
-Requer Node.js 22.12+ na linha 22 e npm. Na pasta `frontend`:
+- **Autenticação com JWT:** Tela de login com atalhos rápidos para os perfis dos instrutores (**Maria Alyce**, **Pedro Leale**, **Gabriel Missio**) e persistência de sessão via `localStorage`.
+- **Chat com Streaming NDJSON:** Consumo em tempo real da rota `POST /api/chat` usando o parser `consumeNdjson` (`application/x-ndjson`), com feedback de digitação e auto-scroll.
+- **Renderização Visual de Tools MCP:**
+  - `CatalogToolCard`: Grade visual de produtos disponíveis com preços e estoque em tempo real.
+  - `PurchaseIntentCard`: Resumo da intenção registrada com identificador, valor total e prazo de validade.
+  - `PurchaseReceiptCard`: Comprovante de compra aprovada via PIX ou Cartão com débito dinâmico de limite.
+  - `PurchaseErrorCard`: Tratamento visual e amigável para recusas de compra (`INTENCAO_INVALIDA`, `LIMITE_EXCEDIDO`, `INTENCAO_EXPIRADA`, `INTENCAO_JA_PAGA`, `METODO_INVALIDO`).
+- **Design Moderno e Minimalista:** Estilo visual limpo, estruturado e minimalista com componentes geométricos e foco na usabilidade.
+- **Controle de Limite em Tempo Real:** Cabeçalho e painel lateral sincronizados dinamicamente com o saldo retornado pelo backend.
+- **Suíte de Testes Automatizados:** Testes com Vitest cobrindo o cliente HTTP do chat, o parser de NDJSON e cenários de erro.
 
-```powershell
-npm.cmd ci
-Copy-Item .env.example .env
-npm.cmd run dev
+---
+
+## 2. Variáveis de Ambiente (`.env`)
+
+Crie o arquivo `.env` baseado no `.env.example`:
+
+| Variável | Valor Padrão | Descrição |
+|---|---|---|
+| `VITE_API_URL` | `http://localhost:3000` | URL da API Backend |
+
+---
+
+## 3. Perfis de Teste para Demonstração
+
+| Usuário | Senha | Nome | Limite Inicial | Finalidade no Desafio |
+|---|---|---|---|---|
+| `cliente_vip` | `123` | Maria Alyce | R$ 15.000,00 | Compras de alto valor (Perfil VIP) |
+| `cliente_padrao` | `123` | Pedro Leale | R$ 2.000,00 | Fluxo padrão de compra com PIX e Cartão |
+| `cliente_sem_saldo` | `123` | Gabriel Missio | R$ 100,00 | Demonstração de recusa por limite excedido |
+
+---
+
+## 4. Como Rodar e Testar
+
+```bash
+# 1. Instalar dependências
+npm install
+
+# 2. Executar suíte de testes unitários (Vitest)
+npm test
+
+# 3. Executar lint de código
+npm run lint
+
+# 4. Executar verificação de build
+npm run build
+
+# 5. Iniciar o frontend em modo desenvolvimento
+npm run dev
 ```
 
-Se já tiver um `.env`, mantenha-o e confira os valores antes de executar. Acesse [localhost:5173](http://localhost:5173).
+---
 
-Os comandos usam `npm.cmd` para evitar bloqueios do PowerShell. Em outros terminais, use `npm`.
-
-### Configuração
-
-```dotenv
-VITE_API_URL=http://localhost:3000
-VITE_USE_MOCKS=true
-```
-
-Com `VITE_USE_MOCKS=true`, a aplicação funciona com dados simulados, sem backend, IA ou pagamentos reais.
-
-Para conectar ao backend, ajuste `VITE_API_URL`, altere `VITE_USE_MOCKS` para `false`, saia da sessão de demonstração e reinicie o Vite.
-
-Não versione o `.env` nem coloque segredos em variáveis `VITE_`: elas ficam disponíveis no navegador.
-
-## Demonstração
-
-Selecione um perfil na tela de login e clique em **Entrar na Nexus**. A senha pública de teste é `123`.
-
-| Perfil              | Nome        | Limite          |
-| ------------------- | ----------- | --------------- |
-| `cliente_vip`       | Maria Alyce | R$ 15.000,00    |
-| `cliente_padrao`    | Pedro Leale  | R$ 2.000,00     |
-| `cliente_sem_saldo` | Gabriel Missio | R$ 100,00       |
-
-Com João, envie uma mensagem por vez:
-
-```text
-O que vocês têm à venda?
-Quero comprar o produto 3
-Pode pagar no pix
-```
-
-Com Carlos, o mesmo fluxo demonstra uma recusa por limite excedido. Os mocks usam respostas predefinidas; não mantêm contabilidade cumulativa. O histórico e o estado financeiro simulado reiniciam ao recarregar a página.
-
-## Organização
+## 5. Estrutura do Projeto
 
 ```text
 src/
-├── assets/       # Imagens
-├── components/   # Chat, produtos, pagamentos e componentes compartilhados
-├── config/       # Ambiente, marca e perfis de demonstração
-├── context/      # Sessão e notificações
-├── hooks/        # Estado do chat, autenticação e conexão
-├── mocks/        # Dados e serviços simulados
-├── pages/        # Login, chat e página não encontrada
-├── routes/       # Proteção das rotas
-├── services/     # API e leitura do streaming NDJSON
-├── styles/       # Estilos e responsividade
-├── types/        # Contratos da aplicação
-└── utils/        # Formatação e validações
+├── assets/       # Imagens e ilustrações da marca
+├── components/   # Chat, produtos, cards de ferramentas e layout
+├── config/       # Configurações de ambiente, marca e perfis
+├── context/      # Contexto de autenticação e notificações toast
+├── hooks/        # Hooks de chat, autenticação e responsividade
+├── pages/        # Telas de Login e Chat principal
+├── routes/       # Roteamento e proteção de rotas privadas
+├── services/     # Clientes HTTP e consumidor de stream NDJSON
+├── styles/       # Estilos CSS modulares e variáveis de design
+├── types/        # Tipagens TypeScript e contratos da API
+└── utils/        # Formatadores de moeda, tempo e type guards
 ```
-
-## Backend
-
-Este diretório contém apenas o frontend. A comunicação com MCP, o modelo de IA e o processamento de pagamentos ficam no backend.
-
-| Método | Rota              | Uso                                          |
-| ------ | ----------------- | -------------------------------------------- |
-| `GET`  | `/health`         | Disponibilidade do backend                   |
-| `POST` | `/api/auth/login` | Autenticação                                 |
-| `GET`  | `/api/user/me`    | Perfil e limite disponível                   |
-| `POST` | `/api/chat`       | Resposta em streaming `application/x-ndjson` |
-
-Os contratos estão em `src/types` e `src/services`. O backend precisa permitir a origem do frontend no CORS. Parar uma resposta no chat não desfaz uma compra já executada.
-
-## Comandos
-
-| Comando               | Função                               |
-| --------------------- | ------------------------------------ |
-| `npm.cmd run dev`     | Iniciar o desenvolvimento            |
-| `npm.cmd run test`    | Executar os 36 testes                |
-| `npm.cmd run lint`    | Verificar o código                   |
-| `npm.cmd run build`   | Verificar TypeScript e gerar `dist/` |
-| `npm.cmd run preview` | Conferir o build localmente          |
-| `npm.cmd run format`  | Formatar com Prettier                |
-
-Antes de enviar alterações, execute `lint`, `test` e `build`. Os testes usam respostas simuladas e não substituem a validação com o backend real.
-
-Se a porta 5173 estiver ocupada:
-
-```powershell
-npm.cmd run dev -- --port 5174
-```
-
-Para publicar, configure o servidor estático para retornar `index.html` nas rotas `/login` e `/chat`. As variáveis de ambiente são incorporadas ao build; gere outro build se elas mudarem.
-
-Mais detalhes em [Validação](docs/VALIDACAO.md) e [Checkpoints](docs/CHECKPOINTS.md).
