@@ -1,6 +1,10 @@
-# Chatbot com Tools MCP de Pagamentos
+<div align="center">
+  <img src="docs/screenshots/top-image.png" alt="Nexus Store Header" width="100%" />
+</div>
 
-Projeto desenvolvido para o desafio do bootcamp **AI Agentic Payments FDE**. É um chatbot de vendas onde o modelo local (**Ollama** rodando `qwen3:1.7b`) conversa com o usuário e executa compras através de ferramentas do **Model Context Protocol (MCP)**.
+# Nexus Store — Chatbot com Tools MCP de Pagamentos
+
+A **Nexus Store** é uma plataforma de periféricos e equipamentos gamers com atendimento conversacional inteligente. Desenvolvido para o desafio do bootcamp **AI Agentic Payments FDE**, o projeto implementa um ecossistema completo onde um modelo de linguagem local (**Ollama** rodando `qwen3:1.7b`) atua como vendedor autônomo, consultando catálogo, gerando reservas e processando compras através de ferramentas do **Model Context Protocol (MCP)**.
 
 ---
 
@@ -87,18 +91,24 @@ cd frontend && npm test
 
 ## 6. Screenshots da Entrega (Requisitos do Desafio)
 
-Conforme especificado no `desafio.md`, a entrega contempla as evidências visuais dos 4 cenários obrigatórios:
+Conforme especificado no `desafio.md`, a entrega contempla as evidências visuais dos casos de teste obrigatórios e de resiliência:
 
-1. **Compra aprovada via PIX:** Sucesso na liquidação via PIX com geração de comprovante e débito de limite.
-   ![Compra Aprovada via PIX](docs/screenshots/compra-aprovada-pix.png)
+### 1. Compra Bem-Sucedida
+Fluxo completo de compra aprovada com catálogo, intenção e recibo financeiro:
+![Compra Aprovada](docs/screenshots/compra-aprovada.png)
 
-2. **Compra aprovada via Cartão:** Sucesso na liquidação via cartão de crédito com atualização de saldo.
-   ![Compra Aprovada via Cartão](docs/screenshots/compra-aprovada-cartao.png)
+### 2. Bloqueio por Limite Excedido (`LIMITE_EXCEDIDO`)
+Tentativa de compra cujo valor excede o limite disponível do cliente (ex: perfil `cliente_sem_saldo`), bloqueada com segurança:
+![Limite Excedido](docs/screenshots/limite-excedido.png)
 
-3. **Recusa por limite excedido (`LIMITE_EXCEDIDO`):** Tentativa de compra com valor acima do saldo disponível (ex: perfil `cliente_sem_saldo`).
-   ![Recusa por Limite Excedido](docs/screenshots/recusa-limite-excedido.png)
+### 3. Validação e Recusa de Intenção Inválida / Jailbreak (`INTENCAO_INVALIDA`)
+Demonstração de segurança contra tentativas de burlar o fluxo através de códigos de intenção falsos/inexistentes:
 
-4. **Recusa por intenção inválida (`INTENCAO_INVALIDA`):** Tentativa de compra com `intencao_id` inventado, expirado ou pertencente a outra sessão.
-   ![Recusa por Intenção Inválida](docs/screenshots/recusa-intencao-invalida.png)
+- **Geração de intenção falsa:**
+  ![Intenção Falsa Sendo Gerada](docs/screenshots/intencao-falsa-sendo-gerada.png)
+
+- **Recusa da intenção falsa pelo backend/MCP:**
+  ![Intenção Falsa Sendo Recusada](docs/screenshots/intencao-falsa-sendo-recusada.png)
+
 
 
